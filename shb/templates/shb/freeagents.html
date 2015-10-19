@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="{% static 'shb/stylesheet.css' %}"/>
+		<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+
+		<title>NewFl / Free Agents</title>
+	</head>
+	<body id="body">
+		<script src="jquery-1.11.3.min.js"></script>
+		<script src='script.js'></script>
+        
+		<div id="header">
+			<a href="newfl.html"><img id="logo" src="http://calband.berkeley.edu/wp-content/themes/calband/css/calband-highstepper.png"/></a> 
+			<h1 id="title"> Free Agents </h1>
+
+		</div>
+		<div id="navbar">
+			<ul id="nav"> 
+				<li class="tab-list"><a href="shb" class="tab">Home</a></li>
+				<li class="tab-list"><a href="mySHB" class="tab">MySHB</a></li>
+				<li class="tab-list"><a href="standings" class="tab">Standings</a></li>
+				<li class="tab-list"><a href="freeagents" class="tab">Free Agents</a></li>
+				<li class="tab-list" style="float: right"><a href="http://127.0.0.1:8000/admin/" class="tab">Login</a></li>
+
+			</ul> 
+
+		</div>
+		<div id="free-agents">
+			<ul><h1>Free Agents</h1></ul>
+			{% for agent in free_agents %}
+				<li class="fa-list">{{agent.newman_name}} || {{agent.points}} points</li>
+			{% endfor %}
+			</ul>
+		</div>
+	</body>
+</html>

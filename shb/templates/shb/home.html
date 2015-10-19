@@ -1,0 +1,9 @@
+{% if all_newmen_list %}
+	<ul>
+		{% for newman in all_newmen_list %}
+			<li>{{newman.newman_name}}</li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<p>All the Newman are Dead.</p>
+{% endif %}

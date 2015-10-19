@@ -1,0 +1,165 @@
+#body {
+	background-color: #3B7EA1;
+}
+
+
+#nav {
+	list-style-type: none;
+	color: white;
+
+
+}
+#logo {
+	height: 100px;
+	width: 85px;
+	float: left;
+	margin-left: 10px;
+	display: inline-block;
+}
+#title {
+	color: white;
+	float: left;
+	position: absolute;
+	display: inline-block;
+	font-family: Helvetica;
+
+}
+
+#container {
+	background-image: url('http://farm1.static.flickr.com/31/65894769_3d835529bf.jpg?v=0');
+	width: 500px;
+	height: 300px;
+	margin: auto;
+}
+.tab-list {
+	display: inline-block;
+	margin-left: 20px;
+	margin-right: 20px;
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.tab {
+	
+	font-family: Verdana;
+	font-size: 20px;
+	text-decoration: none;
+	color: white;
+}
+.tab:hover {
+	font-weight: bold;
+	color: #FDB515;
+}
+
+
+
+#sidebar {
+	height:100%;
+	width: 150px;
+	background-color: #ffa319;
+	float: left;
+	border: 1px solid black;
+	margin: auto;
+	position: absolute;
+	
+}
+#navbar {
+	height: 50px;
+	width: 100%;
+	background-color: #3B7EA1;
+	position: relative;
+	margin: auto;
+	border: 1px solid white;
+	display: block;
+	border-left: 0px;
+	border-right: 0px;
+
+}
+#footer {
+	height: 100px;
+	width: 100%;
+	background-color: #1919FF;
+	position: relative;
+	bottom: 0;
+
+}
+#header {
+	background-color: #003262;
+	height: 100px;
+	width: 100%;
+	margin: 20px #3B7EA1;
+	border-top: 1px solid white;
+	border-left: 0px;
+	border-right: 0px;
+}
+#board {
+	background-color:  #FDB515;
+	height: 100%;
+	width: 200px;
+	display: block;
+	float: right;
+	text-align: left;
+	border: 1px solid white;
+	border-top: 0px;
+}
+.top-newman { 
+	font-size: 14px;
+	font-family: Verdana;
+	margin: 3px;
+	padding: 3px;
+	text-align: left;
+}
+.top-newman:hover {
+	font-weight: bold;
+}
+#standings {
+	background-color: #FDB515;
+	font-family: Helvetica;
+	margin: auto;
+	float: center;
+	height: 300px;
+	width: 85%;
+	text-align: center;
+	border-radius: 25px;
+
+}
+#standings-list {
+}
+.stand-list {
+	text-align: center;
+	font-size: 24px;
+	list-style-position: inside;
+}
+.stand-list:hover{
+	font-weight: bold;
+}
+#shb-table{
+	border: 1px solid white;
+	border-color: white;
+	margin: auto;
+}
+#team-list{
+	margin: auto;
+	background-color: #FDB515;
+	height: 300px;
+	width: 450px;
+	text-align: center;
+}
+.shb-row{
+	border: 1px solid white;
+}
+#free-agents{
+	margin: auto;
+	background-color: #FDB515;
+	height: 300px;
+	width: 450px;
+	text-align: center;
+}
+.fa-list{
+	list-style-type: none;
+	font-size: 18px;
+}
+.fa-list:hover{
+	font-weight: bold;
+}
