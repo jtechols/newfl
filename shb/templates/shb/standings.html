@@ -11,17 +11,17 @@
 		<script src='script.js'></script>
         
 		<div id="header">
-			<a href="newfl.html"><img id="logo" src="http://calband.berkeley.edu/wp-content/themes/calband/css/calband-highstepper.png"/></a> 
+			<a href="{% url 'home' %}"><img id="logo" src="http://calband.berkeley.edu/wp-content/themes/calband/css/calband-highstepper.png"/></a> 
 			<h1 id="title"> Standings </h1>
 
 		</div>
 		<div id="navbar">
 			<ul id="nav"> 
-				<li class="tab-list"><a href="shb" class="tab">Home</a></li>
-				<li class="tab-list"><a href="mySHB" class="tab">MySHB</a></li>
-				<li class="tab-list"><a href="standings" class="tab">Standings</a></li>
-				<li class="tab-list"><a href="freeagents" class="tab">Free Agents</a></li>
-				<li class="tab-list" style="float: right"><a href="http://127.0.0.1:8000/admin/" class="tab">Login</a></li>
+				<li class="tab-list"><a href="{% url 'home' %}" class="tab">Home</a></li>
+				<li class="tab-list"><a href="{% url 'mySHB' %}" class="tab">MySHB</a></li>
+				<li class="tab-list"><a href="{% url 'standings' %}" class="tab">Standings</a></li>
+				<li class="tab-list"><a href="{% url 'freeagents' %}" class="tab">Free Agents</a></li>
+				<li class="tab-list" style="float: right"><a href="{% url 'admin:index' %}" class="tab">Login</a></li>
 
 			</ul> 
 
