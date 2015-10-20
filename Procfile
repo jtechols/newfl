@@ -1,0 +1,1 @@
+web: gunicorn nfl.wsgi --log-file -
