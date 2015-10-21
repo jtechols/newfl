@@ -6,4 +6,5 @@ urlpatterns = [
 	url(r'^mySHB/', views.mySHB, name='mySHB'),
 	url(r'^standings/', views.standings, name='standings'),
 	url(r'^freeagents/', views.freeagents, name='freeagents'),
+	url(r'^login/', views.login, name='login')
 ]

@@ -16,8 +16,10 @@ Including another URLconf
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
+from shb import views
 
 urlpatterns = [
+	url(r'^$', views.login, name='login'),
 	url(r'^shb/', include('shb.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ]
