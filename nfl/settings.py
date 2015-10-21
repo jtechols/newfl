@@ -100,5 +100,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
+#AWS_STORAGE_BUCKET_NAME = 'newfl'
+#AWS_ACCESS_KEY_ID = 'AKIAIYPO4WBUBJQPKSLQ'
+#AWS_SECRET_ACCESS_KEY_ID = 'sGDVDFwFT6AbPna69d9vMKdsKI5EsMWjJHo8Bpyl'
+#AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
-STATIC_URL = 'https://console.aws.amazon.com/s3/home?region=us-west-2#&bucket=newfl&prefix=static/'
+#STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+STATIC_URL = "/static/"
+#STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
