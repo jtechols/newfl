@@ -4,10 +4,21 @@ from django.template import RequestContext, loader
 from .models import Newman, Oldmen, SHB
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout, login, authenticate
 # Create your views here.
-def login(request):
+def logout_view(request):
+	logout(request)
 	context = {}
-	return render(request, 'shb/login.html', context)
+	return render(request, 'registration/logout.html', context)
+def login_view(request):
+	username = request.POST.get('username')
+	password = request.POST.get('password')
+	user = authenticate(username=username, password=password)
+	context = {}
+	if user is not None:
+		return render(request, 'shb/newfl.html', context)
+	else:
+		return render(request, 'registration/login.html', context)
 @login_required
 def home(request):
 	all_newmen_list = Newman.objects.all()
@@ -23,13 +34,13 @@ def mySHB(request):
 				person = oldmen
 	context = {'team_list': team_list, 'person': person}
 	return render(request, 'shb/mySHB.html', context)
-@login_required
+@login_required(login_url='/shb/login/')
 def standings(request):
 	position = 0
 	oldmen_list = Oldmen.objects.order_by('-team_points')
 	context = {'oldmen_list': oldmen_list, 'position':position}
 	return render(request, 'shb/standings.html', context)
-@login_required
+@login_required(login_url='/shb/login/')
 def freeagents(request):
 	free_agents = Newman.objects.filter(owner = None)
 	context = {'free_agents': free_agents}

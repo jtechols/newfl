@@ -17,9 +17,11 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
 from shb import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-	url(r'^$', views.login, name='login'),
+	url(r'^$', include('shb.urls')),
 	url(r'^shb/', include('shb.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^accounts/login/', auth_views.login),
 ]
