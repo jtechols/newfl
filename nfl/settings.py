@@ -97,14 +97,23 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Parse database configuration from $DATABASE_URL
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
-#AWS_STORAGE_BUCKET_NAME = 'newfl'
-#AWS_ACCESS_KEY_ID = 'AKIAIYPO4WBUBJQPKSLQ'
-#AWS_SECRET_ACCESS_KEY_ID = 'sGDVDFwFT6AbPna69d9vMKdsKI5EsMWjJHo8Bpyl'
-#AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-#STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
-STATIC_URL = "/static/"
-#STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
+
+# Static asset configuration
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
