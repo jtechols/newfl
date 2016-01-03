@@ -32,6 +32,7 @@ def home(request):
 def mySHB(request):
 	full_name = request.user.get_full_name()
 	team_list = []
+	person = None
 	for oldmen in Oldmen.objects.all():
 			if full_name == oldmen.team_owner:
 				team_list = oldmen.newman_set.all()
