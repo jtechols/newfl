@@ -31,13 +31,17 @@
 					<th>Instrument</th>
 					<th>Points</th>
 				</tr>
-				{% for newman in team_list %}
-				<tr>
-					<td class="shb-row">{{newman.newman_name}}</td>
-					<td class="shb-row">{{newman.newman_instrument}}</td>
-					<td class="shb-row">{{newman.points}}</td>
-				</tr>
-				{% endfor %}
+				{% if team_list %}
+					{% for newman in team_list %}
+					<tr>
+						<td class="shb-row">{{newman.newman_name}}</td>
+						<td class="shb-row">{{newman.newman_instrument}}</td>
+						<td class="shb-row">{{newman.points}}</td>
+					</tr>
+					{% endfor %}
+				{% else %}
+				<p>All your Newman are dead</p>
+				{% endif %}
 			</table>
 
 			<h2>Total Points: {{ person.team_points }}</h2>
