@@ -1,24 +1,21 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Log In</title>
-	</head>
-	<body>
-		<form method="post" action="{% url 'home' %}">
-			{{ auth_form.non_field_errors }}
-			<p>
-				{{ auth_form.username.errors }}
-				<label for="id_username">{{ "Username" }}:</label><input type="text" name="username" id="id_username">
-			</p>
-			<p>
-				{{ auth_form.password.errors }}
-				<label for="id_password">{{ "Password" }}:</label><input type="password" name="password" id="id_password">
-			</p>
-			<p>
-				<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-				<input type="submit" value="Log in">
-				<input type="hidden" name="next" value="{{ next }}">
-			</p>
-		</form>
-	</body>
-</html>
+{% block content %}
+    {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+    <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>{{ form.username.label_tag }}</td>
+            <td>{{ form.username }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.password.label_tag }}</td>
+            <td>{{ form.password }}</td>
+        </tr>
+    </table>
+    <input type="submit" value="login" />
+    <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+{% endblock %}
