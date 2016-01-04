@@ -37,16 +37,33 @@ def mySHB(request):
 			if full_name == oldmen.team_owner:
 				team_list = oldmen.newman_set.all()
 				person = oldmen
-	context = {'team_list': team_list, 'person': person}
+	for newman in team_list:
+		newman.section()
+	ww_list = team_list.filter(woodwind=True)
+	hb_list = team_list.filter(highbrass=True)
+	lb_list = team_list.filter(lowbrass=True)
+	p_list = team_list.filter(newman_instrument="Perc")
+	context = {'team_list': team_list, 'person': person, 'ww_list': ww_list, 'hb_list': hb_list, 'lb_list':lb_list, 'p_list':p_list}
 	return render(request, 'shb/mySHB.html', context)
-@login_required(login_url='/shb/login/')
+@login_required
 def standings(request):
-	position = 0
 	oldmen_list = Oldmen.objects.order_by('-team_points')
-	context = {'oldmen_list': oldmen_list, 'position':position}
+	person = None
+	full_name = request.user.get_full_name()
+	for oldmen in oldmen_list:
+		if full_name == oldmen.team_owner:
+			person = oldmen
+	context = {'oldmen_list': oldmen_list, 'person': person}
 	return render(request, 'shb/standings.html', context)
-@login_required(login_url='/shb/login/')
+@login_required
 def freeagents(request):
 	free_agents = Newman.objects.filter(owner = None)
 	context = {'free_agents': free_agents}
+	for newman in Newman.objects.all():
+		newman.section()
 	return render(request, 'shb/freeagents.html', context)
+@login_required
+def oldman_detail(request, oldman_id):
+	oldman = Oldmen.objects.filter(id=oldman_id)[0]
+	context  = {'oldman': oldman}
+	return render(request, 'shb/oldman_detail.html', context)

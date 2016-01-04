@@ -134,6 +134,9 @@
 .stand-list:hover{
 	font-weight: bold;
 }
+#self-stand{
+	color: white;
+}
 #shb-table{
 	border: 1px solid white;
 	border-color: white;
@@ -152,14 +155,29 @@
 #free-agents{
 	margin: auto;
 	background-color: #FDB515;
-	height: 300px;
+	height: 100%;
 	width: 450px;
 	text-align: center;
 }
 .fa-list{
 	list-style-type: none;
 	font-size: 18px;
+	border: 1px solid white;
+	border-top: 0px;
 }
 .fa-list:hover{
 	font-weight: bold;
+}
+.old-tail{
+	text-decoration: none;
+	color: white;
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+#fa-table{
+	border: 5px solid white;
+	border-color: white;
+	margin: auto;
 }

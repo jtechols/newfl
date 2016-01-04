@@ -27,18 +27,46 @@
 		<div id="team-list">
 			<table id="shb-table">
 				<tr>
-					<th>Newman Name</th>
+					<th>Position</th>
 					<th>Instrument</th>
+					<th>Name</th>
 					<th>Points</th>
 				</tr>
 				{% if team_list %}
-					{% for newman in team_list %}
-					<tr>
-						<td class="shb-row">{{newman.newman_name}}</td>
-						<td class="shb-row">{{newman.newman_instrument}}</td>
-						<td class="shb-row">{{newman.points}}</td>
-					</tr>
+					{% for ww in ww_list %}
+						<tr>
+							<td class="shb-row">Woodwind</td>
+							<td class="shb-row">{{ ww.newman_instrument }}</td>
+							<td class="shb-row">{{ ww.newman_name }}</td>
+							<td class="shb-row">{{ ww.points }}</td>
+						</tr>
 					{% endfor %}
+					{% for hb in hb_list %}
+						<tr>
+							<td class="shb-row">Upper Brass</td>
+							<td class="shb-row">{{ hb.newman_instrument }}</td>
+							<td class="shb-row">{{ hb.newman_name }}</td>
+							<td class="shb-row">{{ hb.points }}</td>
+						</tr>
+					{% endfor %}
+					{% for lb in lb_list %}
+						<tr>
+							<td class="shb-row">Low Brass</td>
+							<td class="shb-row">{{ lb.newman_instrument }}</td>
+							<td class="shb-row">{{ lb.newman_name }}</td>
+							<td class="shb-row">{{ lb.points }}</td>
+						</tr>
+					{% endfor %}
+					{% for p in p_list %}
+						<tr>
+							<td class="shb-row">Perc</td>
+							<td class="shb-row">{{ p.newman_instrument }}</td>
+							<td class="shb-row">{{ p.newman_name }}</td>
+							<td class="shb-row">{{ p.points }}</td>
+						</tr>
+					{% endfor %}
+
+					
 				{% else %}
 				<p>All your Newman are dead</p>
 				{% endif %}

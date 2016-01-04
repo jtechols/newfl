@@ -4,14 +4,14 @@
 	<head>
 		<link type="text/css" rel="stylesheet" href="https://s3-us-west-1.amazonaws.com/newfl/static/shb/stylesheet.css"/>
 
-		<title>NewFL / Standings</title>
+		<title>NewFL / {{ oldman.team_name }}</title>
 	</head>
 	<body id="body">
 
         
 		<div id="header">
 			<a href="{% url 'home' %}"><img id="logo" src="http://calband.berkeley.edu/wp-content/themes/calband/css/calband-highstepper.png"/></a> 
-			<h1 id="title"> Standings </h1>
+			<h1 id="title"> Newman Fantasy League </h1>
 
 		</div>
 		<div id="navbar">
@@ -25,16 +25,6 @@
 			</ul> 
 
 		</div>
-		<div id="standings">
-			<ol id="standings-list"><h1>Standings</h1>
-				{% for oldman in oldmen_list %}
-					{% if oldman = person %}
-						<li class="stand-list" id="self-stand"><a href="/shb/{{ oldman.id }}/" class="old-tail">{{ oldman.team_name }} || {{ oldman.team_points}} points</a></li>
-					{% else %}
-						<li class="stand-list"><a href="/shb/{{ oldman.id }}/">{{ oldman.team_name }} || {{ oldman.team_points}} points</a></li>
-					{% endif %}
-				{% endfor %}
-				
-			</ol>
+		<p>This is the Oldmen Detail Page for {{ oldman.team_name }}</p>
 	</body>
 </html>

@@ -22,11 +22,30 @@
 			</ul> 
 		</div>
 		<div id="free-agents">
-			<ul><h1>Free Agents</h1></ul>
-			{% for agent in free_agents %}
-				<li class="fa-list">{{agent.newman_name}} || {{agent.points}} points</li>
-			{% endfor %}
-			</ul>
+			<h1>Free Agents</h1>
+			<table id="fa-table">
+				<tr>
+					<th>Position</th>
+					<th>Instrument</th>
+					<th>Name</th>
+					<th>Points</th>
+				</tr>
+				{% for agent in free_agents %}
+					<tr>
+						{% if agent.woodwind %}
+							<td class="fa-list">Woodwind</td>
+						{% elif agent.lowbrass %}
+							<td class="fa-list">Low Brass</td>
+						{% elif agent.highbrass %}
+							<td class="fa-list">Upper Brass</td>
+						{% elif agent.newman_instrument = "Perc" %}
+							<td class="fa-list">Perc</td>
+						{% endif %}
+						<td class="fa-list">{{ agent.newman_instrument }}</td>
+						<td class="fa-list">{{ agent.newman_name }}</td>
+						<td class="fa-list">{{ agent.points }}</td>
+					</tr>
+				{% endfor %}
 		</div>
 	</body>
 </html>
