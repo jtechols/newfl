@@ -11,6 +11,8 @@ class Newman(models.Model):
 	woodwind = models.BooleanField(default=False)
 	lowbrass = models.BooleanField(default=False)
 	highbrass = models.BooleanField(default=False)
+	perc = models.BooleanField(default=False)
+	bench = models.BooleanField(default=False)
 	def __str__(self):
 		return self.newman_name
 	def calc_points(self):
@@ -27,13 +29,16 @@ class Newman(models.Model):
 	def section(self):
 		wwind = ["Picc", "Net 1", "Net 2", "Alto 1", "Alto 2", "Tenor"]
 		upbrass = ["Trumpet 1", "Trumpet 2", "Mello"]
-		lwbrass = ["Bone 1", "Bone 2", "Bearitone", "Bass",]
+		lwbrass = ["Bone 1", "Bone 2", "Bearitone", "Bass"]
+		perc = ["Snare", "Bass Drum", "Tenor Drums", "Cymbals", "Glock"]
 		if self.newman_instrument in wwind:
 			self.woodwind = True
 		if self.newman_instrument in lwbrass:
 			self.lowbrass = True
 		if self.newman_instrument in upbrass:
 			self.highbrass = True
+		if self.newman_instrument in perc:
+			self.perc = True
 		self.save()
 
 class Oldmen(models.Model):
@@ -48,6 +53,16 @@ class Oldmen(models.Model):
 			self.team_points += n.points
 			self.save()
 		return self.team_points
+	def add_newman(self, newman_id):
+		newman = Newman.objects.filter(id=newman_id)[0]
+		newman.owner = self
+		self.save()
+		newman.save()
+	def remove_newman(self, newman_id):
+		newman = Newman.objects.filter(id=newman_id)[0]
+		newman.owner = None
+		self.save()
+		newman.save()
 class SHB(models.Model):
 	shb_name = models.CharField(max_length=200)
 	shb_time = models.DateTimeField('Date of SHB')

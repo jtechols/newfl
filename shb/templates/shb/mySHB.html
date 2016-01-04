@@ -65,14 +65,15 @@
 							<td class="shb-row">{{ p.points }}</td>
 						</tr>
 					{% endfor %}
+						<tr>
+							<td id="shb-point-total" colspan="3">Total Points</td>
+							<td id="shb-point-total">{{ person.team_points }}</td>
 
 					
 				{% else %}
 				<p>All your Newman are dead</p>
 				{% endif %}
 			</table>
-
-			<h2>Total Points: {{ person.team_points }}</h2>
 		</div>
 	</body>
 </html>

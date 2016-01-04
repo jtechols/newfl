@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+
 <html>
 	<head>
 		<link type="text/css" rel="stylesheet" href="https://s3-us-west-1.amazonaws.com/newfl/static/shb/stylesheet.css"/>
@@ -38,12 +39,17 @@
 							<td class="fa-list">Low Brass</td>
 						{% elif agent.highbrass %}
 							<td class="fa-list">Upper Brass</td>
-						{% elif agent.newman_instrument = "Perc" %}
+						{% elif agent.perc %}
 							<td class="fa-list">Perc</td>
 						{% endif %}
 						<td class="fa-list">{{ agent.newman_instrument }}</td>
 						<td class="fa-list">{{ agent.newman_name }}</td>
 						<td class="fa-list">{{ agent.points }}</td>
+						<form method="post" action="/shb/add/{{agent.id}}/">
+    						{% csrf_token %}
+							<td><input type="submit" value="add"/></td>
+							<input type="hidden" name="next" value="{{ next }}" />
+						</form>
 					</tr>
 				{% endfor %}
 		</div>

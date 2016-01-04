@@ -39,10 +39,13 @@ def mySHB(request):
 				person = oldmen
 	for newman in team_list:
 		newman.section()
+	for thing in Newman.objects.all():
+		thing.calc_points()
+	person.team_total()
 	ww_list = team_list.filter(woodwind=True)
 	hb_list = team_list.filter(highbrass=True)
 	lb_list = team_list.filter(lowbrass=True)
-	p_list = team_list.filter(newman_instrument="Perc")
+	p_list = team_list.filter(perc=True)
 	context = {'team_list': team_list, 'person': person, 'ww_list': ww_list, 'hb_list': hb_list, 'lb_list':lb_list, 'p_list':p_list}
 	return render(request, 'shb/mySHB.html', context)
 @login_required
@@ -67,3 +70,18 @@ def oldman_detail(request, oldman_id):
 	oldman = Oldmen.objects.filter(id=oldman_id)[0]
 	context  = {'oldman': oldman}
 	return render(request, 'shb/oldman_detail.html', context)
+@login_required
+def add(request, newman_id):
+	full_name = request.user.get_full_name()
+	for oldmen in Oldmen.objects.all():
+			if full_name == oldmen.team_owner:
+				person = oldmen
+	person.add_newman(newman_id)
+	return mySHB(request)
+def remove(request, newman_id):
+	full_name = request.user.get_full_name()
+	for oldmen in Oldmen.objects.all():
+			if full_name == oldmen.team_owner:
+				person = oldmen
+	person.remove_newman(newman_id)
+	return mySHB(request)
