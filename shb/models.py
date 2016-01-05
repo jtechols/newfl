@@ -35,14 +35,34 @@ class Newman(models.Model):
 		perc = ["Snare", "Bass Drum", "Tenor Drums", "Cymbals", "Glock"]
 		if self.newman_instrument in wwind:
 			self.woodwind = True
+			self.saxophone = False
+			self.lowbrass = False
+			self.highbrass = False
+			self.perc = False
 		if self.newman_instrument in sax:
 			self.saxophone = True
+			self.woodwind = False
+			self.lowbrass = False
+			self.highbrass = False
+			self.perc = False
 		if self.newman_instrument in lwbrass:
 			self.lowbrass = True
+			self.woodwind = False
+			self.saxophone = False
+			self.highbrass = False
+			self.perc = False
 		if self.newman_instrument in upbrass:
 			self.highbrass = True
+			self.woodwind = False
+			self.saxophone = False
+			self.lowbrass = False
+			self.perc = False
 		if self.newman_instrument in perc:
 			self.perc = True
+			self.woodwind = False
+			self.saxophone = False
+			self.lowbrass = False
+			self.highbrass = False
 		self.save()
 
 class Oldmen(models.Model):
