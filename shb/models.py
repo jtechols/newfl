@@ -82,13 +82,13 @@ class Oldmen(models.Model):
 		if len(self.newman_set.all()) < 8:
 			if len(self.newman_set.filter(woodwind=True, bench=False)) < 2 and newman.woodwind: 
 				newman.owner = self
-			if len(self.newman_set.filter(saxophone=True, bench=False)) < 2 and newman.saxophone: 
+			elif len(self.newman_set.filter(saxophone=True, bench=False)) < 2 and newman.saxophone: 
 				newman.owner = self
-			if len(self.newman_set.filter(highbrass=True, bench=False)) < 2 and newman.highbrass: 
+			elif len(self.newman_set.filter(highbrass=True, bench=False)) < 2 and newman.highbrass: 
 				newman.owner = self
-			if len(self.newman_set.filter(lowbrass=True, bench=False)) < 2 and newman.lowbrass: 
+			elif len(self.newman_set.filter(lowbrass=True, bench=False)) < 2 and newman.lowbrass: 
 				newman.owner = self
-			if len(self.newman_set.filter(perc=True, bench=False)) < 2 and newman.perc: 
+			elif len(self.newman_set.filter(perc=True, bench=False)) < 2 and newman.perc: 
 				newman.owner = self
 			else:
 				newman.owner = self
