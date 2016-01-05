@@ -80,19 +80,19 @@ class Oldmen(models.Model):
 	def add_newman(self, newman_id):
 		newman = Newman.objects.filter(id=newman_id)[0]
 		if len(self.newman_set.all()) < 8:
-			if self.newman_set.filter(woodwind=True, bench=False) and newman.woodwind: 
+			if not self.newman_set.filter(woodwind=True, bench=False) and newman.woodwind: 
 				newman.owner = self
-			if self.newman_set.filter(saxophone=True, bench=False) and newman.saxophone: 
+			elif not self.newman_set.filter(saxophone=True, bench=False) and newman.saxophone: 
 				newman.owner = self
-			if self.newman_set.filter(highbrass=True, bench=False) and newman.highbrass: 
+			elif not self.newman_set.filter(highbrass=True, bench=False) and newman.highbrass: 
 				newman.owner = self
-			if self.newman_set.filter(lowbrass=True, bench=False) and newman.lowbrass: 
+			elif not self.newman_set.filter(lowbrass=True, bench=False) and newman.lowbrass: 
 				newman.owner = self
-			if self.newman_set.filter(perc=True, bench=False) and newman.perc: 
+			elif not self.newman_set.filter(perc=True, bench=False) and newman.perc: 
 				newman.owner = self
-		elif len(self.newman_set.all()) < 8:
-			newman.owner = self
-			newman.bench = True
+			else:
+				newman.owner = self
+				newman.bench = True
 		self.save()
 		newman.save()
 	def remove_newman(self, newman_id):
