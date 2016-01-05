@@ -39,6 +39,11 @@
 							<td class="shb-row">{{ ww.newman_instrument }}</td>
 							<td class="shb-row">{{ ww.newman_name }}</td>
 							<td class="shb-row">{{ ww.points }}</td>
+							<form method="post" action="/shb/remove/{{ww.id}}/">
+    						{% csrf_token %}
+								<td><input type="submit" value="drop"/></td>
+									<input type="hidden" name="next" value="{{ next }}" />
+							</form>
 						</tr>
 					{% endfor %}
 					{% for sax in sax_list %}
@@ -47,6 +52,11 @@
 							<td class="shb-row">{{ sax.newman_instrument }}</td>
 							<td class="shb-row">{{ sax.newman_name }}</td>
 							<td class="shb-row">{{ sax.points }}</td>
+							<form method="post" action="/shb/remove/{{sax.id}}/">
+    						{% csrf_token %}
+								<td><input type="submit" value="drop"/></td>
+									<input type="hidden" name="next" value="{{ next }}" />
+							</form>
 						</tr>
 					{% endfor %}
 					{% for hb in hb_list %}
@@ -55,6 +65,11 @@
 							<td class="shb-row">{{ hb.newman_instrument }}</td>
 							<td class="shb-row">{{ hb.newman_name }}</td>
 							<td class="shb-row">{{ hb.points }}</td>
+							<form method="post" action="/shb/remove/{{hb.id}}/">
+    						{% csrf_token %}
+								<td><input type="submit" value="drop"/></td>
+									<input type="hidden" name="next" value="{{ next }}" />
+							</form>
 						</tr>
 					{% endfor %}
 					{% for lb in lb_list %}
@@ -63,6 +78,11 @@
 							<td class="shb-row">{{ lb.newman_instrument }}</td>
 							<td class="shb-row">{{ lb.newman_name }}</td>
 							<td class="shb-row">{{ lb.points }}</td>
+							<form method="post" action="/shb/remove/{{lb.id}}/">
+    						{% csrf_token %}
+								<td><input type="submit" value="drop"/></td>
+									<input type="hidden" name="next" value="{{ next }}" />
+							</form>
 						</tr>
 					{% endfor %}
 					{% for p in p_list %}
@@ -71,6 +91,11 @@
 							<td class="shb-row">{{ p.newman_instrument }}</td>
 							<td class="shb-row">{{ p.newman_name }}</td>
 							<td class="shb-row">{{ p.points }}</td>
+							<form method="post" action="/shb/remove/{{p.id}}/">
+    						{% csrf_token %}
+								<td><input type="submit" value="drop"/></td>
+									<input type="hidden" name="next" value="{{ next }}" />
+							</form>
 						</tr>
 					{% endfor %}
 						<tr>

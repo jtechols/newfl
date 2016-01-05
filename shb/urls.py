@@ -10,4 +10,5 @@ urlpatterns = [
 	url(r'^logout/', views.logout_view, name='logout'),
 	url(r'^(?P<oldman_id>[0-9]+)/$', views.oldman_detail, name='oldman_detail'),
 	url(r'^add/(?P<newman_id>[0-9]+)/$', views.add, name='add'),
+	url(r'^remove/(?P<newman_id>[0-9]+)/$', views.remove, name='remove'),
 ]
