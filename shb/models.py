@@ -80,15 +80,15 @@ class Oldmen(models.Model):
 	def add_newman(self, newman_id):
 		newman = Newman.objects.filter(id=newman_id)[0]
 		if len(self.newman_set.all()) < 8:
-			if len(self.newman_set.filter(woodwind=True, bench=False)) < 2 and newman.woodwind: 
+			if self.newman_set.filter(woodwind=True, bench=False) and newman.woodwind: 
 				newman.owner = self
-			elif len(self.newman_set.filter(saxophone=True, bench=False)) < 2 and newman.saxophone: 
+			elif self.newman_set.filter(saxophone=True, bench=False) and newman.saxophone: 
 				newman.owner = self
-			elif len(self.newman_set.filter(highbrass=True, bench=False)) < 2 and newman.highbrass: 
+			elif self.newman_set.filter(highbrass=True, bench=False) and newman.highbrass: 
 				newman.owner = self
-			elif len(self.newman_set.filter(lowbrass=True, bench=False)) < 2 and newman.lowbrass: 
+			elif self.newman_set.filter(lowbrass=True, bench=False) and newman.lowbrass: 
 				newman.owner = self
-			elif len(self.newman_set.filter(perc=True, bench=False)) < 2 and newman.perc: 
+			elif self.newman_set.filter(perc=True, bench=False) and newman.perc: 
 				newman.owner = self
 			else:
 				newman.owner = self
