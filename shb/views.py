@@ -85,3 +85,5 @@ def remove(request, newman_id):
 				person = oldmen
 	person.remove_newman(newman_id)
 	return mySHB(request)
+def test(request):
+	
