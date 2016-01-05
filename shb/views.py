@@ -41,7 +41,7 @@ def mySHB(request):
 	for newman in team_list:
 		newman.section()
 	for each_new in Newman.objects.all():
-		thing.calc_points()
+		each_new.calc_points()
 	ww_list = team_list.filter(woodwind=True)
 	sax_list = team_list.filter(saxophone=True)
 	hb_list = team_list.filter(highbrass=True)
