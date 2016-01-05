@@ -101,7 +101,22 @@
 						<tr>
 							<td id="shb-point-total" colspan="3">Total Points</td>
 							<td id="shb-point-total">{{ person.team_points }}</td>
-
+						<tr>
+							<th colspan=5 id="shb-point-total">Bench</th>
+						</tr>
+					{% for b in b_list %}
+						<tr>
+							<td class="shb-row">Bench</td>
+							<td class="shb-row">{{ b.newman_instrument }}</td>
+							<td class="shb-row">{{ b.newman_name }}</td>
+							<td class="shb-row">{{ b.points }}</td>
+							<form method="post" action="/shb/remove/{{p.id}}/">
+    						{% csrf_token %}
+								<td><input type="submit" value="drop"/></td>
+									<input type="hidden" name="next" value="{{ next }}" />
+							</form>
+						</tr>
+					{% endfor %}
 					
 				{% else %}
 				<p>All your Newman are dead</p>

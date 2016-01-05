@@ -79,12 +79,26 @@ class Oldmen(models.Model):
 		return self.team_points
 	def add_newman(self, newman_id):
 		newman = Newman.objects.filter(id=newman_id)[0]
-		newman.owner = self
+		if len(self.newman_set.all()) < 8:
+			if len(self.newman_set.filter(woodwind=True, bench=False)) < 2 and newman.woodwind: 
+				newman.owner = self
+			if len(self.newman_set.filter(saxophone=True, bench=False)) < 2 and newman.saxophone: 
+				newman.owner = self
+			if len(self.newman_set.filter(highbrass=True, bench=False)) < 2 and newman.highbrass: 
+				newman.owner = self
+			if len(self.newman_set.filter(lowbrass=True, bench=False)) < 2 and newman.lowbrass: 
+				newman.owner = self
+			if len(self.newman_set.filter(perc=True, bench=False)) < 2 and newman.perc: 
+				newman.owner = self
+			else:
+				newman.owner = self
+				newman.bench = True
 		self.save()
 		newman.save()
 	def remove_newman(self, newman_id):
 		newman = Newman.objects.filter(id=newman_id)[0]
 		newman.owner = None
+		newman.bench = False
 		self.save()
 		newman.save()
 class SHB(models.Model):

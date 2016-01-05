@@ -43,18 +43,20 @@ def mySHB(request):
 	for each_new in Newman.objects.all():
 		each_new.calc_points()
 	if team_list:
-		ww_list = team_list.filter(woodwind=True)
-		sax_list = team_list.filter(saxophone=True)
-		hb_list = team_list.filter(highbrass=True)
-		lb_list = team_list.filter(lowbrass=True)
-		p_list = team_list.filter(perc=True)
+		ww_list = team_list.filter(woodwind=True, bench=False)
+		sax_list = team_list.filter(saxophone=True, bench=False)
+		hb_list = team_list.filter(highbrass=True, bench=False)
+		lb_list = team_list.filter(lowbrass=True, bench=False)
+		p_list = team_list.filter(perc=True, bench=False)
+		b_list = team_list.filter(bench=True)
 	else:
 		ww_list = []
 		sax_list = []
 		hb_list = []
 		lb_list = []
 		p_list = []
-	context = {'team_list': team_list, 'person': person, 'ww_list': ww_list, 'sax_list':sax_list, 'hb_list': hb_list, 'lb_list':lb_list, 'p_list':p_list}
+		b_list = []
+	context = {'team_list': team_list, 'person': person, 'ww_list': ww_list, 'sax_list':sax_list, 'hb_list': hb_list, 'lb_list':lb_list, 'p_list':p_list, 'b_list':b_list}
 	return render(request, 'shb/mySHB.html', context)
 @login_required
 def standings(request):
@@ -69,6 +71,7 @@ def standings(request):
 @login_required
 def freeagents(request):
 	free_agents = Newman.objects.filter(owner = None)
+	free_agents = free_agents.order_by('-points')
 	context = {'free_agents': free_agents}
 	for newman in Newman.objects.all():
 		newman.section()
