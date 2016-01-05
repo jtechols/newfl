@@ -84,12 +84,12 @@ def add(request, newman_id):
 	for oldmen in Oldmen.objects.all():
 			if full_name == oldmen.team_owner:
 				person = oldmen
-	person.add_newman(newman_id)
+				person.add_newman(newman_id)
 	return mySHB(request)
 def remove(request, newman_id):
 	full_name = request.user.get_full_name()
 	for oldmen in Oldmen.objects.all():
 			if full_name == oldmen.team_owner:
 				person = oldmen
-	person.remove_newman(newman_id)
+				person.remove_newman(newman_id)
 	return mySHB(request)
