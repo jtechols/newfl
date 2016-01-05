@@ -110,7 +110,7 @@
 							<td class="shb-row">{{ b.newman_instrument }}</td>
 							<td class="shb-row">{{ b.newman_name }}</td>
 							<td class="shb-row">{{ b.points }}</td>
-							<form method="post" action="/shb/remove/{{p.id}}/">
+							<form method="post" action="/shb/remove/{{b.id}}/">
     						{% csrf_token %}
 								<td><input type="submit" value="drop"/></td>
 									<input type="hidden" name="next" value="{{ next }}" />
