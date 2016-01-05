@@ -37,11 +37,11 @@ def mySHB(request):
 			if full_name == oldmen.team_owner:
 				team_list = oldmen.newman_set.all()
 				person = oldmen
+				person.team_total()
 	for newman in team_list:
 		newman.section()
-	for thing in Newman.objects.all():
+	for each_new in Newman.objects.all():
 		thing.calc_points()
-	person.team_total()
 	ww_list = team_list.filter(woodwind=True)
 	sax_list = team_list.filter(saxophone=True)
 	hb_list = team_list.filter(highbrass=True)
