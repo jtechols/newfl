@@ -41,6 +41,14 @@
 							<td class="shb-row">{{ ww.points }}</td>
 						</tr>
 					{% endfor %}
+					{% for sax in sax_list %}
+						<tr>
+							<td class="shb-row">Saxophone</td>
+							<td class="shb-row">{{ sax.newman_instrument }}</td>
+							<td class="shb-row">{{ sax.newman_name }}</td>
+							<td class="shb-row">{{ sax.points }}</td>
+						</tr>
+					{% endfor %}
 					{% for hb in hb_list %}
 						<tr>
 							<td class="shb-row">Upper Brass</td>

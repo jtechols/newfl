@@ -9,6 +9,7 @@ class Newman(models.Model):
 	owner = models.ForeignKey('Oldmen', null=True, blank=True)
 	points = models.IntegerField(default=0)
 	woodwind = models.BooleanField(default=False)
+	saxophone = models.BooleanField(default=False)
 	lowbrass = models.BooleanField(default=False)
 	highbrass = models.BooleanField(default=False)
 	perc = models.BooleanField(default=False)
@@ -27,12 +28,15 @@ class Newman(models.Model):
 	calc_points.admin_order_field = 'points'
 	calc_points.short_description = "Point Total"
 	def section(self):
-		wwind = ["Picc", "Net 1", "Net 2", "Alto 1", "Alto 2", "Tenor"]
+		wwind = ["Picc", "Net 1", "Net 2"] 
+		sax = ["Alto 1", "Alto 2", "Tenor"]
 		upbrass = ["Trumpet 1", "Trumpet 2", "Mello"]
 		lwbrass = ["Bone 1", "Bone 2", "Bearitone", "Bass"]
 		perc = ["Snare", "Bass Drum", "Tenor Drums", "Cymbals", "Glock"]
 		if self.newman_instrument in wwind:
 			self.woodwind = True
+		if self.newman_instrument in sax:
+			self.saxophone = True
 		if self.newman_instrument in lwbrass:
 			self.lowbrass = True
 		if self.newman_instrument in upbrass:
