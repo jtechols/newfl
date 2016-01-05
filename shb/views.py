@@ -42,11 +42,18 @@ def mySHB(request):
 		newman.section()
 	for each_new in Newman.objects.all():
 		each_new.calc_points()
-	ww_list = team_list.filter(woodwind=True)
-	sax_list = team_list.filter(saxophone=True)
-	hb_list = team_list.filter(highbrass=True)
-	lb_list = team_list.filter(lowbrass=True)
-	p_list = team_list.filter(perc=True)
+	if team_list:
+		ww_list = team_list.filter(woodwind=True)
+		sax_list = team_list.filter(saxophone=True)
+		hb_list = team_list.filter(highbrass=True)
+		lb_list = team_list.filter(lowbrass=True)
+		p_list = team_list.filter(perc=True)
+	else:
+		ww_list = []
+		sax_list = []
+		hb_list = []
+		lb_list = []
+		p_list = []
 	context = {'team_list': team_list, 'person': person, 'ww_list': ww_list, 'sax_list':sax_list, 'hb_list': hb_list, 'lb_list':lb_list, 'p_list':p_list}
 	return render(request, 'shb/mySHB.html', context)
 @login_required
