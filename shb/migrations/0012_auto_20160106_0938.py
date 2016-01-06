@@ -16,8 +16,9 @@ class Migration(migrations.Migration):
             name='flex',
             field=models.BooleanField(default=False),
         ),
-        migrations.RemoveField(
+        migrations.AddField(
             model_name='newman',
             name='saxophone',
+            field=models.BooleanField(default=False),
         ),
     ]
