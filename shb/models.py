@@ -9,12 +9,12 @@ class Newman(models.Model):
 	owner = models.ForeignKey('Oldmen', null=True, blank=True)
 	points = models.IntegerField(default=0)
 	woodwind = models.BooleanField(default=False)
-	saxophone = models.BooleanField(default=False)
+	#saxophone = models.BooleanField(default=False, null=True)
 	lowbrass = models.BooleanField(default=False)
 	highbrass = models.BooleanField(default=False)
 	perc = models.BooleanField(default=False)
 	bench = models.BooleanField(default=False)
-	flex = models.BooleanField(default=False)
+	flex = models.BooleanField(default=False, null=True)
 	def __str__(self):
 		return self.newman_name
 	def calc_points(self):
