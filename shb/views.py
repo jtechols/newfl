@@ -13,6 +13,7 @@ def logout_view(request):
 def login_view(request):
 	username = request.POST['username']
 	password = request.POST['password']
+	match = True
 	user = authenticate(username=username, password=password)
 	all_newmen_list = Newman.objects.all()
 	newmen_point_list = all_newmen_list.order_by('-points')[:10]
@@ -21,6 +22,8 @@ def login_view(request):
 		login(request, user)
 		return render(request, 'shb/newfl.html', context)
 	else:
+		match = False
+		context = {'match':match}
 		return render(request, 'registration/login.html', context)
 @login_required
 def home(request):
@@ -62,6 +65,8 @@ def mySHB(request):
 	return render(request, 'shb/mySHB.html', context)
 @login_required
 def standings(request):
+	for oldman in Oldmen.objects.all()
+		oldman.team_total()
 	oldmen_list = Oldmen.objects.order_by('-team_points')
 	person = None
 	full_name = request.user.get_full_name()
