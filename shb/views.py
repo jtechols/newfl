@@ -65,7 +65,7 @@ def mySHB(request):
 	return render(request, 'shb/mySHB.html', context)
 @login_required
 def standings(request):
-	for oldman in Oldmen.objects.all()
+	for oldman in Oldmen.objects.all():
 		oldman.team_total()
 	oldmen_list = Oldmen.objects.order_by('-team_points')
 	person = None
