@@ -9,7 +9,7 @@ class Newman(models.Model):
 	owner = models.ForeignKey('Oldmen', null=True, blank=True)
 	points = models.IntegerField(default=0)
 	woodwind = models.BooleanField(default=False)
-	#saxophone = models.BooleanField(default=False)
+	saxophone = models.BooleanField(default=False)
 	lowbrass = models.BooleanField(default=False)
 	highbrass = models.BooleanField(default=False)
 	perc = models.BooleanField(default=False)
