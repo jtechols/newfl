@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader
 from .models import Newman, Oldmen, SHB
 from django.contrib.auth.models import User
@@ -21,7 +21,7 @@ def login_view(request):
 		login(request, user)
 		return render(request, 'shb/newfl.html', context)
 	else:
-		return HttpRedirect('/shb/')
+		return HttpResponseRedirect('/shb/')
 @login_required
 def home(request):
 	match = True
