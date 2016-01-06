@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRedirect
 from django.template import RequestContext, loader
 from .models import Newman, Oldmen, SHB
 from django.contrib.auth.models import User
@@ -10,20 +10,18 @@ def logout_view(request):
 	logout(request)
 	context = {}
 	return render(request, 'registration/logout.html', context)
-def login_view(request, match=True):
+def login_view(request):
 	username = request.POST['username']
 	password = request.POST['password']
 	user = authenticate(username=username, password=password)
 	all_newmen_list = Newman.objects.all()
 	newmen_point_list = all_newmen_list.order_by('-points')[:10]
-	context = {	'all_newmen_list': all_newmen_list, 'newmen_point_list': newmen_point_list, 'match':match}
+	context = {	'all_newmen_list': all_newmen_list, 'newmen_point_list': newmen_point_list}
 	if user:
 		login(request, user)
 		return render(request, 'shb/newfl.html', context)
 	else:
-		match = False
-		context = {'match':match}
-		return login_view(request, match)
+		return HttpRedirect('/shb/')
 @login_required
 def home(request):
 	match = True
