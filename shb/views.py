@@ -125,10 +125,13 @@ def oldman_edit(request, oldman_id):
 	context = {'oldman':oldman, 'form':form}
 	return render(request, 'shb/oldman_edit.html', context)
 @login_required
-def oldman_view_edit(request, oldman_id):
+def oldman_edit_save(request, oldman_id):
+	team_name = request.POST['team_name']
 	oldman = Oldmen.objects.filter(id=oldman_id)[0]
+	oldman.team_name = team_name
+	oldman.save()
 	context = {'oldman':oldman}
-	return render(request, 'shb/oldman_edit.html', context)
+	return oldman_detail(request, oldman_id)
 @login_required
 def add(request, newman_id):
 	full_name = request.user.get_full_name()

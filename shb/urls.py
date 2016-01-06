@@ -15,6 +15,6 @@ urlpatterns = [
 	url(r'^start/(?P<newman_id>[0-9]+)/$', views.start_newman, name='start_newman'),
 	url(r'^flex/(?P<newman_id>[0-9]+)/$', views.flex_newman, name='flex_newman'),
 	url(r'^edit/(?P<oldman_id>[0-9]+)/$', views.oldman_edit, name='oldman_view_edit'),
-	#url(r'^edit/(?P<oldman_id>[0-9]+)/save/$', views.oldman_edit, name='oldman_edit'),
+	url(r'^edit/(?P<oldman_id>[0-9]+)/save/$', views.oldman_edit_save, name='oldman_edit_save'),
 ]
 
