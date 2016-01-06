@@ -183,8 +183,7 @@ a{
 }
 #prof-contain{
 	height: 210px;
-	width: 1600px;
-	background-color: white;
+	width: 160px;
 	float: left;
 
 }
@@ -196,6 +195,7 @@ a{
 	margin-left: 0 auto;
 	margin-right: 0 auto;
 	display: block;
+	border: 10px white;
 
 }
 #oldman-bio{
@@ -216,4 +216,10 @@ a{
 }
 #bio-name{
 	margin-left: 10px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+#bio-owner{
+	margin-left: 10px;
+	font-size: 10px;
 }
