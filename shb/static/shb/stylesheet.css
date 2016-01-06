@@ -159,6 +159,9 @@
 .lineup-button{
 	border: 1px solid white;
 }
+.shb-header{
+	border: 0px;
+}
 #free-agents{
 	margin: auto;
 	background-color: #FDB515;
