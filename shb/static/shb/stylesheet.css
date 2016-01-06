@@ -182,22 +182,32 @@ a{
 	margin: auto;
 }
 #prof-contain{
-	height: 450px;
+	height: 300px;
 	width: 200px;
 	background-color: white;
 	float: left;
 
 }
 #prof-pic{
-	height: 400px;
+	height: 200px;
 	width: 150px;
-	margin: auto;
+	margin-top: 0 auto;
+	margin-bottom: 0 auto;
+	margin-left: 0 auto;
+	margin-right: 0 auto;
+	display: block;
 
 }
 #oldman-bio{
 	width: 450px;
 	height: 100px;
 	background-color: #FDB515;
+	display: inline-block;
+	margin-left: 10px;
+	border-radius: 30px;
+	margin-right: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 
 
 }
