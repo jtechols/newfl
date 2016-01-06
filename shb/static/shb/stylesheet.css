@@ -182,8 +182,8 @@ a{
 	margin: auto;
 }
 #prof-contain{
-	height: 300px;
-	width: 200px;
+	height: 210px;
+	width: 1600px;
 	background-color: white;
 	float: left;
 
@@ -213,4 +213,7 @@ a{
 }
 #team-detail{
 
+}
+#bio-name{
+	margin-left: 10px;
 }
