@@ -109,7 +109,7 @@ def oldman_detail(request, oldman_id):
 	context  = {'oldman': oldman, 'team_list':team_list, 'ww_list': ww_list, 'sax_list':sax_list, 'hb_list': hb_list, 'lb_list':lb_list, 'p_list':p_list, 'b_list':b_list, 'f_list':f_list}
 	return render(request, 'shb/oldman_detail.html', context)
 @login_required
-def oldman_edit(request, oldman_id, team_name):
+def oldman_edit(request, oldman_id):
 	team_name = request.POST['team_name']
 	oldman = Oldmen.objects.filter(id=oldman_id)[0]
 	for oldmen in Oldmen.objects.all():
@@ -119,7 +119,12 @@ def oldman_edit(request, oldman_id, team_name):
 		oldman.team_name = team_name
 		oldman.save()
 	return oldman_detail(request,oldman_id)
-
+@login_required
+def oldman_view_edit(request, oldman_id):
+	team_name = request.POST['team_name']
+	oldman = Oldmen.objects.filter(id=oldman_id)[0]
+	context = {'oldman':oldman}
+	return render(request, 'shb/oldman_edit.html', context)
 @login_required
 def add(request, newman_id):
 	full_name = request.user.get_full_name()
