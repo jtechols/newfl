@@ -43,12 +43,13 @@ def mySHB(request):
 	for each_new in Newman.objects.all():
 		each_new.calc_points()
 	if team_list:
-		ww_list = team_list.filter(woodwind=True, bench=False)
-		sax_list = team_list.filter(saxophone=True, bench=False)
-		hb_list = team_list.filter(highbrass=True, bench=False)
-		lb_list = team_list.filter(lowbrass=True, bench=False)
-		p_list = team_list.filter(perc=True, bench=False)
+		ww_list = team_list.filter(woodwind=True, bench=False, flex=False)
+		sax_list = team_list.filter(saxophone=True, bench=False, flex=False)
+		hb_list = team_list.filter(highbrass=True, bench=False, flex=False)
+		lb_list = team_list.filter(lowbrass=True, bench=False, flex=False)
+		p_list = team_list.filter(perc=True, bench=False, flex=False)
 		b_list = team_list.filter(bench=True)
+		f_list = team_list.filter(flex=True)
 	else:
 		ww_list = []
 		sax_list = []
@@ -56,7 +57,8 @@ def mySHB(request):
 		lb_list = []
 		p_list = []
 		b_list = []
-	context = {'team_list': team_list, 'person': person, 'ww_list': ww_list, 'sax_list':sax_list, 'hb_list': hb_list, 'lb_list':lb_list, 'p_list':p_list, 'b_list':b_list}
+		f_list = []
+	context = {'team_list': team_list, 'person': person, 'ww_list': ww_list, 'sax_list':sax_list, 'hb_list': hb_list, 'lb_list':lb_list, 'p_list':p_list, 'b_list':b_list, 'f_list':f_list}
 	return render(request, 'shb/mySHB.html', context)
 @login_required
 def standings(request):
@@ -85,12 +87,13 @@ def oldman_detail(request, oldman_id):
 	for each_new in Newman.objects.all():
 		each_new.calc_points()
 	if team_list:
-		ww_list = team_list.filter(woodwind=True, bench=False)
-		sax_list = team_list.filter(saxophone=True, bench=False)
-		hb_list = team_list.filter(highbrass=True, bench=False)
-		lb_list = team_list.filter(lowbrass=True, bench=False)
-		p_list = team_list.filter(perc=True, bench=False)
+		ww_list = team_list.filter(woodwind=True, bench=False, flex=False)
+		sax_list = team_list.filter(saxophone=True, bench=False, flex=False)
+		hb_list = team_list.filter(highbrass=True, bench=False, flex=False)
+		lb_list = team_list.filter(lowbrass=True, bench=False, flex=False)
+		p_list = team_list.filter(perc=True, bench=False, flex=False)
 		b_list = team_list.filter(bench=True)
+		f_list = team_list.filter(flex=True)
 	else:
 		ww_list = []
 		sax_list = []
@@ -98,8 +101,9 @@ def oldman_detail(request, oldman_id):
 		lb_list = []
 		p_list = []
 		b_list = []
+		f_list = []
 	oldman.team_total()
-	context  = {'oldman': oldman, 'team_list':team_list, 'ww_list': ww_list, 'sax_list':sax_list, 'hb_list': hb_list, 'lb_list':lb_list, 'p_list':p_list, 'b_list':b_list}
+	context  = {'oldman': oldman, 'team_list':team_list, 'ww_list': ww_list, 'sax_list':sax_list, 'hb_list': hb_list, 'lb_list':lb_list, 'p_list':p_list, 'b_list':b_list, 'f_list':f_list}
 	return render(request, 'shb/oldman_detail.html', context)
 @login_required
 def add(request, newman_id):
@@ -132,4 +136,12 @@ def start_newman(request, newman_id):
 			if full_name == oldmen.team_owner:
 				person = oldmen
 				person.start_newman(newman_id)
+	return mySHB(request)
+@login_required
+def flex_newman(request, newman_id):
+	full_name = request.user.get_full_name()
+	for oldmen in Oldmen.objects.all():
+			if full_name == oldmen.team_owner:
+				person = oldmen
+				person.flex_newman(newman_id)
 	return mySHB(request)

@@ -27,13 +27,14 @@
 		<div id="team-list">
 			<table id="shb-table">
 				<tr class="shb-header">
-					<th colspan=6>My SHB</th>
+					<th colspan=7>My SHB</th>
 				</tr>
 				<tr class="shb-header">
 					<th>Position</th>
 					<th>Instrument</th>
 					<th>Name</th>
 					<th>Points</th>
+					<th></th>
 					<th></th>
 					<th></th>
 				</tr>
@@ -54,6 +55,15 @@
 								<td class="lineup-button"><input type="submit" value="bench"/></td>
 									<input type="hidden" name="next" value="{{ next }}" />
 							</form>
+							{% if not f_list %}
+								<form method="post" action="/shb/flex/{{ww.id}}/">
+    							{% csrf_token %}
+									<td class="lineup-button"><input type="submit" value="flex"/></td>
+										<input type="hidden" name="next" value="{{ next }}" />
+								</form>
+							{% else %}
+								<td class="lineup-button"></td>
+							{% endif %}
 						</tr>
 					{% endfor %}
 					{% for sax in sax_list %}
@@ -72,6 +82,15 @@
 								<td class="lineup-button"><input type="submit" value="bench"/></td>
 									<input type="hidden" name="next" value="{{ next }}" />
 							</form>
+							{% if not f_list %}
+								<form method="post" action="/shb/flex/{{sax.id}}/">
+    							{% csrf_token %}
+									<td class="lineup-button"><input type="submit" value="flex"/></td>
+										<input type="hidden" name="next" value="{{ next }}" />
+								</form>
+							{% else %}
+								<td class="lineup-button"></td>
+							{% endif %}
 						</tr>
 					{% endfor %}
 					{% for hb in hb_list %}
@@ -90,6 +109,15 @@
 								<td class="lineup-button"><input type="submit" value="bench"/></td>
 									<input type="hidden" name="next" value="{{ next }}" />
 							</form>
+							{% if not f_list %}
+								<form method="post" action="/shb/flex/{{hb.id}}/">
+    							{% csrf_token %}
+									<td class="lineup-button"><input type="submit" value="flex"/></td>
+										<input type="hidden" name="next" value="{{ next }}" />
+								</form>
+							{% else %}
+								<td class="lineup-button"></td>
+							{% endif %}
 						</tr>
 					{% endfor %}
 					{% for lb in lb_list %}
@@ -108,6 +136,15 @@
 								<td class="lineup-button"><input type="submit" value="bench"/></td>
 									<input type="hidden" name="next" value="{{ next }}" />
 							</form>
+							{% if not f_list %}
+								<form method="post" action="/shb/flex/{{lb.id}}/">
+    							{% csrf_token %}
+									<td class="lineup-button"><input type="submit" value="flex"/></td>
+										<input type="hidden" name="next" value="{{ next }}" />
+								</form>
+							{% else %}
+								<td class="lineup-button"></td>
+							{% endif %}
 						</tr>
 					{% endfor %}
 					{% for p in p_list %}
@@ -126,6 +163,66 @@
 								<td class="lineup-button"><input type="submit" value="bench"/></td>
 									<input type="hidden" name="next" value="{{ next }}" />
 							</form>
+							{% if not f_list %}
+								<form method="post" action="/shb/flex/{{p.id}}/">
+    							{% csrf_token %}
+									<td class="lineup-button"><input type="submit" value="flex"/></td>
+										<input type="hidden" name="next" value="{{ next }}" />
+								</form>
+							{% else %}
+								<td class="lineup-button"></td>
+							{% endif %}
+						</tr>
+					{% endfor %}
+					{% for f in f_list %}
+						<tr>
+							<td class="shb-row">Flex</td>
+							<td class="shb-row">{{ f.newman_instrument }}</td>
+							<td class="shb-row">{{ f.newman_name }}</td>
+							<td class="shb-row">{{ f.points }}</td>
+							<form method="post" action="/shb/remove/{{f.id}}/">
+    						{% csrf_token %}
+								<td class="lineup-button"><input type="submit" value="drop"/></td>
+									<input type="hidden" name="next" value="{{ next }}" />
+							</form>
+							<form method="post" action="/shb/bench/{{f.id}}/">
+    						{% csrf_token %}
+								<td class="lineup-button"><input type="submit" value="bench"/></td>
+									<input type="hidden" name="next" value="{{ next }}" />
+							</form>
+							{% if f.woodwind and not ww_list %}
+								<form method="post" action="/shb/start/{{f.id}}/">
+    							{% csrf_token %}
+									<td class="lineup-button"><input type="submit" value="start"/></td>
+										<input type="hidden" name="next" value="{{ next }}" />
+								</form>
+							{% elif f.saxophone and not sax_list %}
+								<form method="post" action="/shb/start/{{f.id}}/">
+    							{% csrf_token %}
+									<td class="lineup-button"><input type="submit" value="start"/></td>
+										<input type="hidden" name="next" value="{{ next }}" />
+								</form>
+							{% elif f.highbrass and not hb_list %}
+								<form method="post" action="/shb/start/{{f.id}}/">
+    							{% csrf_token %}
+									<td class="lineup-button"><input type="submit" value="start"/></td>
+										<input type="hidden" name="next" value="{{ next }}" />
+								</form>
+							{% elif f.lowbrass and not lb_list %}
+								<form method="post" action="/shb/start/{{f.id}}/">
+    							{% csrf_token %}
+									<td class="lineup-button"><input type="submit" value="start"/></td>
+										<input type="hidden" name="next" value="{{ next }}" />
+								</form>
+							{% elif f.perc and not p_list %}
+								<form method="post" action="/shb/start/{{f.id}}/">
+    							{% csrf_token %}
+									<td class="lineup-button"><input type="submit" value="start"/></td>
+										<input type="hidden" name="next" value="{{ next }}" />
+								</form>
+							{% else %}
+								<td class="lineup-button"></td>
+							{% endif %}
 						</tr>
 					{% endfor %}
 						<tr>
@@ -175,6 +272,15 @@
 								<form method="post" action="/shb/start/{{b.id}}/">
     							{% csrf_token %}
 									<td class="lineup-button"><input type="submit" value="start"/></td>
+										<input type="hidden" name="next" value="{{ next }}" />
+								</form>
+							{% else %}
+								<td class="lineup-button"></td>
+							{% endif %}
+							{% if not f_list %}
+								<form method="post" action="/shb/flex/{{b.id}}/">
+    							{% csrf_token %}
+									<td class="lineup-button"><input type="submit" value="flex"/></td>
 										<input type="hidden" name="next" value="{{ next }}" />
 								</form>
 							{% else %}

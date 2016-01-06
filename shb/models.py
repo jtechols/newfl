@@ -14,6 +14,7 @@ class Newman(models.Model):
 	highbrass = models.BooleanField(default=False)
 	perc = models.BooleanField(default=False)
 	bench = models.BooleanField(default=False)
+	flex = models.BooleanField(default=False)
 	def __str__(self):
 		return self.newman_name
 	def calc_points(self):
@@ -104,23 +105,35 @@ class Oldmen(models.Model):
 		newman.save()
 	def bench_newman(self, newman_id):
 		newman = self.newman_set.filter(id=newman_id)[0]
-		newman.bench=True
+		newman.bench = True
+		newman.flex = False
 		self.save()
 		newman.save()
 	def start_newman(self, newman_id):
 		newman = self.newman_set.filter(id=newman_id)[0]
-		if not self.newman_set.filter(woodwind=True, bench=False) and newman.woodwind: 
+		if not self.newman_set.filter(woodwind=True, bench=False, flex=False) and newman.woodwind: 
 				newman.bench = False
-		elif not self.newman_set.filter(saxophone=True, bench=False) and newman.saxophone: 
+				newman.flex = False
+		elif not self.newman_set.filter(saxophone=True, bench=False, flex=False) and newman.saxophone: 
 				newman.bench = False
-		elif not self.newman_set.filter(highbrass=True, bench=False) and newman.highbrass: 
+				newman.flex = False
+		elif not self.newman_set.filter(highbrass=True, bench=False, flex=False) and newman.highbrass: 
 				newman.bench = False
-		elif not self.newman_set.filter(lowbrass=True, bench=False) and newman.lowbrass: 
+				newman.flex = False
+		elif not self.newman_set.filter(lowbrass=True, bench=False, flex=False) and newman.lowbrass: 
 				newman.bench = False
-		elif not self.newman_set.filter(perc=True, bench=False) and newman.perc: 
+				newman.flex = False
+		elif not self.newman_set.filter(perc=True, bench=False, flex=False) and newman.perc: 
 				newman.bench = False
+				newman.flex = False
 		self.save()
 		newman.save()
+	def flex_newman(self, newman_id):
+		newman = self.newman_set.filter(id=newman_id)[0]
+		if not self.newman_set.filter(flex=True):
+			newman.flex = True
+		newman.save()
+		self.save()
 class SHB(models.Model):
 	shb_name = models.CharField(max_length=200)
 	shb_time = models.DateTimeField('Date of SHB')
