@@ -19,6 +19,5 @@ class Migration(migrations.Migration):
         migrations.RemoveField(
             model_name='newman',
             name='saxophone',
-            field=models.BooleanField(default=False),
         ),
     ]
