@@ -5,6 +5,7 @@ from .models import Newman, Oldmen, SHB
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout, login, authenticate
+from .forms import *
 # Create your views here.
 def logout_view(request):
 	logout(request)
