@@ -99,7 +99,7 @@ def oldman_detail(request, oldman_id):
 		p_list = []
 		b_list = []
 	oldman.team_total()
-	context  = {'oldman': oldman, 'ww_list': ww_list, 'sax_list':sax_list, 'hb_list': hb_list, 'lb_list':lb_list, 'p_list':p_list, 'b_list':b_list}
+	context  = {'oldman': oldman, 'team_list':team_list 'ww_list': ww_list, 'sax_list':sax_list, 'hb_list': hb_list, 'lb_list':lb_list, 'p_list':p_list, 'b_list':b_list}
 	return render(request, 'shb/oldman_detail.html', context)
 @login_required
 def add(request, newman_id):
