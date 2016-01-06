@@ -92,8 +92,8 @@ def oldman_detail(request, oldman_id):
 		hb_list = team_list.filter(highbrass=True, bench=False, flex=False)
 		lb_list = team_list.filter(lowbrass=True, bench=False, flex=False)
 		p_list = team_list.filter(perc=True, bench=False, flex=False)
-		b_list = team_list.filter(bench=True)
-		f_list = team_list.filter(flex=True)
+		b_list = team_list.filter(bench=True, flex=False)
+		f_list = team_list.filter(flex=True, bench=False)
 	else:
 		ww_list = []
 		sax_list = []
