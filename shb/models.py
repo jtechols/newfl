@@ -74,7 +74,7 @@ class Oldmen(models.Model):
 		return self.team_owner
 	def team_total(self):
 		self.team_points = 0
-		for n in self.newman_set.all():
+		for n in self.newman_set.filter(bench=False):
 			self.team_points += n.points
 			self.save()
 		return self.team_points
