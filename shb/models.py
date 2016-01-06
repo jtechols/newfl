@@ -132,7 +132,7 @@ class Oldmen(models.Model):
 		newman = self.newman_set.filter(id=newman_id)[0]
 		if not self.newman_set.filter(flex=True):
 			newman.flex = True
-			newman.bench - False
+			newman.bench = False
 		newman.save()
 		self.save()
 class SHB(models.Model):
