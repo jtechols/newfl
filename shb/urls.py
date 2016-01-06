@@ -11,4 +11,6 @@ urlpatterns = [
 	url(r'^(?P<oldman_id>[0-9]+)/$', views.oldman_detail, name='oldman_detail'),
 	url(r'^add/(?P<newman_id>[0-9]+)/$', views.add, name='add'),
 	url(r'^remove/(?P<newman_id>[0-9]+)/$', views.remove, name='remove'),
+	url(r'^bench/(?P<newman_id>[0-9]+)/$', views.bench, name='bench'),
+	url(r'^start/(?P<newman_id>[0-9]+)/$', views.start_newman, name='start_newman'),
 ]

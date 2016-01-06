@@ -96,3 +96,17 @@ def remove(request, newman_id):
 				person = oldmen
 				person.remove_newman(newman_id)
 	return mySHB(request)
+def bench(request, newman_id):
+	full_name = request.user.get_full_name()
+	for oldmen in Oldmen.objects.all():
+			if full_name == oldmen.team_owner:
+				person = oldmen
+				person.bench_newman(newman_id)
+	return mySHB(request)
+def start_newman(request, newman_id):
+	full_name = request.user.get_full_name()
+	for oldmen in Oldmen.objects.all():
+			if full_name == oldmen.team_owner:
+				person = oldmen
+				person.start_newman(newman_id)
+	return mySHB(request)

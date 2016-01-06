@@ -65,6 +65,7 @@ class Newman(models.Model):
 			self.highbrass = False
 		self.save()
 
+
 class Oldmen(models.Model):
 	team_name =models.CharField(max_length=200)
 	team_owner = models.CharField(max_length=200)
@@ -79,7 +80,7 @@ class Oldmen(models.Model):
 		return self.team_points
 	def add_newman(self, newman_id):
 		newman = Newman.objects.filter(id=newman_id)[0]
-		if len(self.newman_set.all()) < 8:
+		if len(self.newman_set.all()) < 8 and not newman.owner:
 			if not self.newman_set.filter(woodwind=True, bench=False) and newman.woodwind: 
 				newman.owner = self
 			elif not self.newman_set.filter(saxophone=True, bench=False) and newman.saxophone: 
@@ -96,9 +97,28 @@ class Oldmen(models.Model):
 		self.save()
 		newman.save()
 	def remove_newman(self, newman_id):
-		newman = Newman.objects.filter(id=newman_id)[0]
+		newman = self.newman_set.filter(id=newman_id)[0]
 		newman.owner = None
 		newman.bench = False
+		self.save()
+		newman.save()
+	def bench_newman(sefl, newman_id):
+		newman = self.newman_set.filter(id=newman_id)[0]
+		newman.bench=True
+		self.save()
+		newman.save()
+	def start_newman(self, newman_id):
+		newman = self.newman_set.filter(id=newman_id)[0]
+		if not self.newman_set.filter(woodwind=True, bench=False) and newman.woodwind: 
+				newman.bench = False
+		elif not self.newman_set.filter(saxophone=True, bench=False) and newman.saxophone: 
+				newman.bench = False
+		elif not self.newman_set.filter(highbrass=True, bench=False) and newman.highbrass: 
+				newman.bench = False
+		elif not self.newman_set.filter(lowbrass=True, bench=False) and newman.lowbrass: 
+				newman.bench = False
+		elif not self.newman_set.filter(perc=True, bench=False) and newman.perc: 
+				newman.bench = False
 		self.save()
 		newman.save()
 class SHB(models.Model):
