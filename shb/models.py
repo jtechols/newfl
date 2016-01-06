@@ -102,7 +102,7 @@ class Oldmen(models.Model):
 		newman.bench = False
 		self.save()
 		newman.save()
-	def bench_newman(sefl, newman_id):
+	def bench_newman(self, newman_id):
 		newman = self.newman_set.filter(id=newman_id)[0]
 		newman.bench=True
 		self.save()
