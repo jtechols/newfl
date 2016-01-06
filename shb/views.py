@@ -27,9 +27,10 @@ def login_view(request):
 		return render(request, 'registration/login.html', context)
 @login_required
 def home(request):
+	match = True
 	all_newmen_list = Newman.objects.all()
 	newmen_point_list = all_newmen_list.order_by('-points')[:10]
-	context = {	'all_newmen_list': all_newmen_list, 'newmen_point_list': newmen_point_list}
+	context = {	'all_newmen_list': all_newmen_list, 'newmen_point_list': newmen_point_list, 'match':match}
 	return render(request, 'shb/newfl.html', context)
 @login_required
 def mySHB(request):
