@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="https://s3-us-west-1.amazonaws.com/newfl/static/shb/stylesheet.css"/>
+
+		<title>NewFL / {{ oldman.team_name }}</title>
+	</head>
+	<body id="body">
+
+        
+		<div id="header">
+			<a href="{% url 'home' %}"><img id="logo" src="http://calband.berkeley.edu/wp-content/themes/calband/css/calband-highstepper.png"/></a> 
+			<h1 id="title"> Newman Fantasy League </h1>
+
+		</div>
+		<div id="navbar">
+			<ul id="nav"> 
+				<li class="tab-list"><a href="{% url 'home' %}" class="tab">Home</a></li>
+				<li class="tab-list"><a href="{% url 'mySHB' %}" class="tab">MySHB</a></li>
+				<li class="tab-list"><a href="{% url 'standings' %}" class="tab">Standings</a></li>
+				<li class="tab-list"><a href="{% url 'freeagents' %}" class="tab">Free Agents</a></li>
+				<li class="tab-list" style="float: right"><a href="{% url 'logout' %}" class="tab">Logout</a></li>
+
+			</ul> 
+		</div>
+		<div id="oldman-settings-div">
+			<table id="oldman-settings-table">
+				<form method="post" action="/shb/edit/{{oldman.id}}/">
+    			{% csrf_token %}
+        			<tr>
+            			<td>Team Name:</td>
+            			<td>{{ form.team_name }}</td>
+        			</tr>
+    					<input type="submit" value="save" />
+    					<input type="hidden" name="next" value="{{ next }}" />
+    			</form>
+			</table>
+		</div>
+	</body>
+</html>
