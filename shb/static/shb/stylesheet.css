@@ -158,6 +158,11 @@
 }
 .lineup-button{
 	border: 1px solid white;
+	border-right: 0px;
+}
+.empty-button{
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
 }
 .shb-header{
 	border: 0px;
