@@ -111,7 +111,7 @@ def oldman_detail(request, oldman_id):
 @login_required
 def oldman_edit(request, oldman_id):
 	oldman = Oldmen.objects.filter(id=oldman_id)[0]
-	full_name = request.user.get_full_name()s
+	full_name = request.user.get_full_name()
 	for oldmen in Oldmen.objects.all():
 			if full_name == oldmen.team_owner:
 				person = oldmen
