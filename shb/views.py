@@ -115,7 +115,7 @@ def oldman_edit(request, oldman_id):
 	for oldmen in Oldmen.objects.all():
 			if full_name == oldmen.team_owner:
 				person = oldmen
-	if person == oldman
+	if person == oldman:
 		oldman.team_name = team_name
 		oldman.save()
 	return oldman_detail(request,oldman_id)
