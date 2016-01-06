@@ -121,7 +121,6 @@ def oldman_edit(request, oldman_id):
 	return oldman_detail(request,oldman_id)
 @login_required
 def oldman_view_edit(request, oldman_id):
-	team_name = request.POST['team_name']
 	oldman = Oldmen.objects.filter(id=oldman_id)[0]
 	context = {'oldman':oldman}
 	return render(request, 'shb/oldman_edit.html', context)
