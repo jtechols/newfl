@@ -79,7 +79,27 @@ def freeagents(request):
 @login_required
 def oldman_detail(request, oldman_id):
 	oldman = Oldmen.objects.filter(id=oldman_id)[0]
-	context  = {'oldman': oldman}
+	team_list = oldman.newman_set.all()
+	for newman in team_list:
+		newman.section()
+	for each_new in Newman.objects.all():
+		each_new.calc_points()
+	if team_list:
+		ww_list = team_list.filter(woodwind=True, bench=False)
+		sax_list = team_list.filter(saxophone=True, bench=False)
+		hb_list = team_list.filter(highbrass=True, bench=False)
+		lb_list = team_list.filter(lowbrass=True, bench=False)
+		p_list = team_list.filter(perc=True, bench=False)
+		b_list = team_list.filter(bench=True)
+	else:
+		ww_list = []
+		sax_list = []
+		hb_list = []
+		lb_list = []
+		p_list = []
+		b_list = []
+	oldman.team_total()
+	context  = {'oldman': oldman, 'ww_list': ww_list, 'sax_list':sax_list, 'hb_list': hb_list, 'lb_list':lb_list, 'p_list':p_list, 'b_list':b_list}
 	return render(request, 'shb/oldman_detail.html', context)
 @login_required
 def add(request, newman_id):
@@ -89,6 +109,7 @@ def add(request, newman_id):
 				person = oldmen
 				person.add_newman(newman_id)
 	return mySHB(request)
+@login_required
 def remove(request, newman_id):
 	full_name = request.user.get_full_name()
 	for oldmen in Oldmen.objects.all():
@@ -96,6 +117,7 @@ def remove(request, newman_id):
 				person = oldmen
 				person.remove_newman(newman_id)
 	return mySHB(request)
+@login_required
 def bench(request, newman_id):
 	full_name = request.user.get_full_name()
 	for oldmen in Oldmen.objects.all():
@@ -103,6 +125,7 @@ def bench(request, newman_id):
 				person = oldmen
 				person.bench_newman(newman_id)
 	return mySHB(request)
+@login_required
 def start_newman(request, newman_id):
 	full_name = request.user.get_full_name()
 	for oldmen in Oldmen.objects.all():

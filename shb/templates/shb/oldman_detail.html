@@ -2,7 +2,7 @@
 {% load staticfiles %}
 <html>
 	<head>
-		<link type="text/css" rel="stylesheet" href="https://s3-us-west-1.amazonaws.com/newfl/static/shb/stylesheet.css"/>
+		<link type="text/css" rel="stylesheet" href="https://s3-us-west-1.amazonaws.com/newfl/static/detail/stylesheet.css"/>
 
 		<title>NewFL / {{ oldman.team_name }}</title>
 	</head>
@@ -33,6 +33,73 @@
 			<p id="bio-owner">{{oldman.team_owner}}</p>
 		</div>
 		<div id="team-detail">
+			<table id="detail-table">
+				<tr>
+					<th>Position</th>
+					<th>Instrument</th>
+					<th>Name</th>
+					<th>Points</th>
+				</tr>
+				{% if team_list %}
+					{% for ww in ww_list %}
+						<tr>
+							<td class="detail-row">Woodwind</td>
+							<td class="detail-row">{{ ww.newman_instrument }}</td>
+							<td class="detail-row">{{ ww.newman_name }}</td>
+							<td class="detail-row">{{ ww.points }}</td>
+						</tr>
+					{% endfor %}
+					{% for sax in sax_list %}
+						<tr>
+							<td class="detail-row">Saxophone</td>
+							<td class="detail-row">{{ sax.newman_instrument }}</td>
+							<td class="detail-row">{{ sax.newman_name }}</td>
+							<td class="detail-row">{{ sax.points }}</td>
+						</tr>
+					{% endfor %}
+					{% for hb in hb_list %}
+						<tr>
+							<td class="detail-row">Upper Brass</td>
+							<td class="detail-row">{{ hb.newman_instrument }}</td>
+							<td class="detail-row">{{ hb.newman_name }}</td>
+							<td class="detail-row">{{ hb.points }}</td>
+						</tr>
+					{% endfor %}
+					{% for lb in lb_list %}
+						<tr>
+							<td class="detail-row">Low Brass</td>
+							<td class="detail-row">{{ lb.newman_instrument }}</td>
+							<td class="detail-row">{{ lb.newman_name }}</td>
+							<td class="detail-row">{{ lb.points }}</td>
+						</tr>
+					{% endfor %}
+					{% for p in p_list %}
+						<tr>
+							<td class="detail-row">Perc</td>
+							<td class="detail-row">{{ p.newman_instrument }}</td>
+							<td class="detail-row">{{ p.newman_name }}</td>
+							<td class="detail-row">{{ p.points }}</td>
+						</tr>
+					{% endfor %}
+						<tr>
+							<td id="detail-point-total" colspan="3">Total Points</td>
+							<td id="detail-point-total">{{ oldman.team_points }}</td>
+						<tr>
+							<th colspan=5 id="detail-point-total">Bench</th>
+						</tr>
+					{% for b in b_list %}
+						<tr>
+							<td class="detail-row">Bench</td>
+							<td class="detail-row">{{ b.newman_instrument }}</td>
+							<td class="detail-row">{{ b.newman_name }}</td>
+							<td class="detail-row">{{ b.points }}</td>
+						</tr>
+					{% endfor %}
+					
+				{% else %}
+				<p>All your Newman are dead</p>
+				{% endif %}
+			</table>
 
 		</div>
 	</body>

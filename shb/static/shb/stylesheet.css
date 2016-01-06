@@ -152,6 +152,9 @@
 .shb-row{
 	border: 1px solid white;
 }
+#shb-point-total{
+	border-top: 1px solid white;
+}
 #free-agents{
 	margin: auto;
 	background-color: #FDB515;
@@ -182,20 +185,20 @@ a{
 	margin: auto;
 }
 #prof-contain{
-	height: 210px;
-	width: 160px;
+	height: 250px;
+	width: 180px;
 	float: left;
 
 }
 #prof-pic{
 	height: 200px;
-	width: 150px;
+	width: 160px;
 	margin-top: 0 auto;
 	margin-bottom: 0 auto;
 	margin-left: 0 auto;
 	margin-right: 0 auto;
 	display: block;
-	border: 10px white;
+	border: 10px solid white;
 
 }
 #oldman-bio{
@@ -212,14 +215,35 @@ a{
 
 }
 #team-detail{
+	width: 300px;
+	height: 300px;
+	background-color: #FDB515;
+	display: inline-block;
+	margin-top: 5px;
+
+}
+.detail-row{
+	border: 0px;
+	border-top: 1px solid black;
+
+}
+#detail-table{
+	border: 5px solid white;
+
+}
+#detail-point-total{
+	border-top: 2px solid black;
 
 }
 #bio-name{
 	margin-left: 10px;
 	margin-bottom: 0px;
 	padding-bottom: 0px;
+	border-bottom: 0px;
 }
 #bio-owner{
 	margin-left: 10px;
-	font-size: 10px;
+	font-size: 12px;
+	margin-top: 1px;
+	padding-top: 1px;
 }
