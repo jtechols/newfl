@@ -114,13 +114,16 @@ def oldman_edit(request, oldman_id):
 	for oldmen in Oldmen.objects.all():
 			if full_name == oldmen.team_owner:
 				person = oldmen
-	if person == oldman:
-		oldman.team_name = team_name
-		oldman.save()
-	return oldman_detail(request,oldman_id)
+	if request.method == 'POST':
+		form = UpdateTeam(request.POST)
+		if form.is_valid():
+			return oldman_detail(request,oldman_id)
+	else:
+		form = UpdateTeam()
+	context = {'oldman':oldman, 'form':form}
+	return render(request, 'shb/oldman_edit.html', context)
 @login_required
 def oldman_view_edit(request, oldman_id):
-	team_name = request.POST['team_name']
 	oldman = Oldmen.objects.filter(id=oldman_id)[0]
 	context = {'oldman':oldman}
 	return render(request, 'shb/oldman_edit.html', context)
