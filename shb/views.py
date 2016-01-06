@@ -13,11 +13,10 @@ def logout_view(request):
 def login_view(request):
 	username = request.POST['username']
 	password = request.POST['password']
-	match = True
 	user = authenticate(username=username, password=password)
 	all_newmen_list = Newman.objects.all()
 	newmen_point_list = all_newmen_list.order_by('-points')[:10]
-	context = {	'all_newmen_list': all_newmen_list, 'newmen_point_list': newmen_point_list, 'match':match}
+	context = {	'all_newmen_list': all_newmen_list, 'newmen_point_list': newmen_point_list}
 	if user:
 		login(request, user)
 		return render(request, 'shb/newfl.html', context)
