@@ -41,12 +41,12 @@
 							<td class="shb-row">{{ ww.points }}</td>
 							<form method="post" action="/shb/remove/{{ww.id}}/">
     						{% csrf_token %}
-								<td><input type="submit" value="drop"/></td>
+								<td class="lineup-button"><input type="submit" value="drop"/></td>
 									<input type="hidden" name="next" value="{{ next }}" />
 							</form>
 							<form method="post" action="/shb/bench/{{ww.id}}/">
     						{% csrf_token %}
-								<td><input type="submit" value="bench"/></td>
+								<td class="lineup-button"><input type="submit" value="bench"/></td>
 									<input type="hidden" name="next" value="{{ next }}" />
 							</form>
 						</tr>
@@ -59,12 +59,12 @@
 							<td class="shb-row">{{ sax.points }}</td>
 							<form method="post" action="/shb/remove/{{sax.id}}/">
     						{% csrf_token %}
-								<td><input type="submit" value="drop"/></td>
+								<td class="lineup-button"><input type="submit" value="drop"/></td>
 									<input type="hidden" name="next" value="{{ next }}" />
 							</form>
 							<form method="post" action="/shb/bench/{{sax.id}}/">
     						{% csrf_token %}
-								<td><input type="submit" value="bench"/></td>
+								<td class="lineup-button"><input type="submit" value="bench"/></td>
 									<input type="hidden" name="next" value="{{ next }}" />
 							</form>
 						</tr>
@@ -77,12 +77,12 @@
 							<td class="shb-row">{{ hb.points }}</td>
 							<form method="post" action="/shb/remove/{{hb.id}}/">
     						{% csrf_token %}
-								<td><input type="submit" value="drop"/></td>
+								<td class="lineup-button"><input type="submit" value="drop"/></td>
 									<input type="hidden" name="next" value="{{ next }}" />
 							</form>
 							<form method="post" action="/shb/bench/{{hb.id}}/">
     						{% csrf_token %}
-								<td><input type="submit" value="bench"/></td>
+								<td class="lineup-button"><input type="submit" value="bench"/></td>
 									<input type="hidden" name="next" value="{{ next }}" />
 							</form>
 						</tr>
@@ -95,12 +95,12 @@
 							<td class="shb-row">{{ lb.points }}</td>
 							<form method="post" action="/shb/remove/{{lb.id}}/">
     						{% csrf_token %}
-								<td><input type="submit" value="drop"/></td>
+								<td class="lineup-button"><input type="submit" value="drop"/></td>
 									<input type="hidden" name="next" value="{{ next }}" />
 							</form>
 							<form method="post" action="/shb/bench/{{lb.id}}/">
     						{% csrf_token %}
-								<td><input type="submit" value="bench"/></td>
+								<td class="lineup-button"><input type="submit" value="bench"/></td>
 									<input type="hidden" name="next" value="{{ next }}" />
 							</form>
 						</tr>
@@ -113,12 +113,12 @@
 							<td class="shb-row">{{ p.points }}</td>
 							<form method="post" action="/shb/remove/{{p.id}}/">
     						{% csrf_token %}
-								<td><input type="submit" value="drop"/></td>
+								<td class="lineup-button"><input type="submit" value="drop"/></td>
 									<input type="hidden" name="next" value="{{ next }}" />
 							</form>
 							<form method="post" action="/shb/bench/{{p.id}}/">
     						{% csrf_token %}
-								<td><input type="submit" value="bench"/></td>
+								<td class="lineup-button"><input type="submit" value="bench"/></td>
 									<input type="hidden" name="next" value="{{ next }}" />
 							</form>
 						</tr>
@@ -137,37 +137,37 @@
 							<td class="shb-row">{{ b.points }}</td>
 							<form method="post" action="/shb/remove/{{b.id}}/">
     						{% csrf_token %}
-								<td><input type="submit" value="drop"/></td>
+								<td class="lineup-button"><input type="submit" value="drop"/></td>
 									<input type="hidden" name="next" value="{{ next }}" />
 							</form>
 							{% if b.woodwind and not ww_list %}
 								<form method="post" action="/shb/start/{{b.id}}/">
     							{% csrf_token %}
-									<td><input type="submit" value="start"/></td>
+									<td class="lineup-button"><input type="submit" value="start"/></td>
 										<input type="hidden" name="next" value="{{ next }}" />
 								</form>
 							{% elif b.saxophone and not sax_list %}
 								<form method="post" action="/shb/start/{{b.id}}/">
     							{% csrf_token %}
-									<td><input type="submit" value="start"/></td>
+									<td class="lineup-button"><input type="submit" value="start"/></td>
 										<input type="hidden" name="next" value="{{ next }}" />
 								</form>
 							{% elif b.highbrass and not hb_list %}
 								<form method="post" action="/shb/start/{{b.id}}/">
     							{% csrf_token %}
-									<td><input type="submit" value="start"/></td>
+									<td class="lineup-button"><input type="submit" value="start"/></td>
 										<input type="hidden" name="next" value="{{ next }}" />
 								</form>
 							{% elif b.lowbrass and not lb_list %}
 								<form method="post" action="/shb/start/{{b.id}}/">
     							{% csrf_token %}
-									<td><input type="submit" value="start"/></td>
+									<td class="lineup-button"><input type="submit" value="start"/></td>
 										<input type="hidden" name="next" value="{{ next }}" />
 								</form>
 							{% elif b.perc and not p_list %}
 								<form method="post" action="/shb/start/{{b.id}}/">
     							{% csrf_token %}
-									<td><input type="submit" value="start"/></td>
+									<td class="lineup-button"><input type="submit" value="start"/></td>
 										<input type="hidden" name="next" value="{{ next }}" />
 								</form>
 

@@ -141,6 +141,7 @@
 	border: 1px solid white;
 	border-color: white;
 	margin: auto;
+	border-collapse: collapse;
 }
 #team-list{
 	margin: auto;
@@ -154,6 +155,9 @@
 }
 #shb-point-total{
 	border-top: 1px solid white;
+}
+.lineup-button{
+	border: 1px solid white;
 }
 #free-agents{
 	margin: auto;
@@ -220,15 +224,20 @@ a{
 	background-color: #FDB515;
 	display: inline-block;
 	margin-top: 5px;
+	border: 5px solid white;
+	margin-left: 10px; 
 
 }
 .detail-row{
 	border: 0px;
 	border-top: 1px solid black;
+	margin-left: 0px;
+	margin-right: 0px;
 
 }
 #detail-table{
-	border: 5px solid white;
+	border-collapse: collapse;
+	
 
 }
 #detail-point-total{
