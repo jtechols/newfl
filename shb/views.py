@@ -110,7 +110,6 @@ def oldman_detail(request, oldman_id):
 	return render(request, 'shb/oldman_detail.html', context)
 @login_required
 def oldman_edit(request, oldman_id):
-	team_name = request.POST['team_name']
 	oldman = Oldmen.objects.filter(id=oldman_id)[0]
 	for oldmen in Oldmen.objects.all():
 			if full_name == oldmen.team_owner:
@@ -121,6 +120,7 @@ def oldman_edit(request, oldman_id):
 	return oldman_detail(request,oldman_id)
 @login_required
 def oldman_view_edit(request, oldman_id):
+	team_name = request.POST['team_name']
 	oldman = Oldmen.objects.filter(id=oldman_id)[0]
 	context = {'oldman':oldman}
 	return render(request, 'shb/oldman_edit.html', context)
