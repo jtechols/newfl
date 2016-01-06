@@ -177,7 +177,8 @@
 									<td class="lineup-button"><input type="submit" value="start"/></td>
 										<input type="hidden" name="next" value="{{ next }}" />
 								</form>
-
+							{% else %}
+								<td class="lineup-button"></td>
 							{% endif %}
 						</tr>
 					{% endfor %}
