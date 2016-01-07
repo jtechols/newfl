@@ -84,7 +84,14 @@ def freeagents(request):
 	return render(request, 'shb/freeagents.html', context)
 @login_required
 def oldman_detail(request, oldman_id):
+	edit = False
 	oldman = Oldmen.objects.filter(id=oldman_id)[0]
+	full_name = request.user.get_full_name()
+	for oldmen in Oldmen.objects.all():
+			if full_name == oldmen.team_owner:
+				person = oldmen
+	if oldman == person:
+		edit = True
 	team_list = oldman.newman_set.all()
 	for newman in team_list:
 		newman.section()
@@ -107,7 +114,7 @@ def oldman_detail(request, oldman_id):
 		b_list = []
 		f_list = []
 	oldman.team_total()
-	context  = {'oldman': oldman, 'team_list':team_list, 'ww_list': ww_list, 'sax_list':sax_list, 'hb_list': hb_list, 'lb_list':lb_list, 'p_list':p_list, 'b_list':b_list, 'f_list':f_list}
+	context  = {'oldman': oldman, 'team_list':team_list, 'ww_list': ww_list, 'sax_list':sax_list, 'hb_list': hb_list, 'lb_list':lb_list, 'p_list':p_list, 'b_list':b_list, 'f_list':f_list, 'edit':edit}
 	return render(request, 'shb/oldman_detail.html', context)
 @login_required
 def oldman_edit(request, oldman_id):
@@ -127,9 +134,14 @@ def oldman_edit(request, oldman_id):
 @login_required
 def oldman_edit_save(request, oldman_id):
 	team_name = request.POST['team_name']
+	full_name = request.user.get_full_name()
+	for oldmen in Oldmen.objects.all():
+			if full_name == oldmen.team_owner:
+				person = oldmen
 	oldman = Oldmen.objects.filter(id=oldman_id)[0]
-	oldman.team_name = team_name
-	oldman.save()
+	if oldman == person:
+		oldman.team_name = team_name
+		oldman.save()
 	context = {'oldman':oldman}
 	return oldman_detail(request, oldman_id)
 @login_required
