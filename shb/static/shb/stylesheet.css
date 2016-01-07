@@ -267,12 +267,15 @@ a{
 }
 #oldman-edit{
 	font-size: 12px;
-	text-decoration: underline;
 	margin: 0px;
 	margin-left: 10px;
 
 }
-#oldman-edit:hover{
-	color: white;
+#oldman-edit-link:hover{
 	font-weight: bold;
+	color: white;
+}
+
+#oldman-edit-link{
+	text-decoration: underline;
 }
