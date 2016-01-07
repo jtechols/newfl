@@ -75,9 +75,9 @@ def standings(request):
 	context = {'oldmen_list': oldmen_list, 'person': person}
 	return render(request, 'shb/standings.html', context)
 @login_required
-def freeagents(request):
+def freeagents(request, sort="-points"):
 	free_agents = Newman.objects.filter(owner = None)
-	free_agents = free_agents.order_by('-points')
+	free_agents = free_agents.order_by(sort)
 	context = {'free_agents': free_agents}
 	for newman in Newman.objects.all():
 		newman.section()
