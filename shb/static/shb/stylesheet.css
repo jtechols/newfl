@@ -264,3 +264,13 @@ a{
 	margin-top: 1px;
 	padding-top: 1px;
 }
+#oldman-edit{
+	font-size: 10px;
+	text-decoration: underline;
+	margin: 0px;
+
+}
+#oldman-edit:hover{
+	color: white;
+	font-weight: bold;
+}
