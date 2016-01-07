@@ -260,14 +260,16 @@ a{
 }
 #bio-owner{
 	margin-left: 10px;
-	font-size: 12px;
+	font-size: 11px;
 	margin-top: 1px;
 	padding-top: 1px;
+	margin-bottom: 1px;
 }
 #oldman-edit{
-	font-size: 10px;
+	font-size: 12px;
 	text-decoration: underline;
 	margin: 0px;
+	margin-left: 10px;
 
 }
 #oldman-edit:hover{
