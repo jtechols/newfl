@@ -17,7 +17,7 @@
 				<li class="tab-list"><a href="{% url 'home' %}" class="tab">Home</a></li>
 				<li class="tab-list"><a href="{% url 'mySHB' %}" class="tab">MySHB</a></li>
 				<li class="tab-list"><a href="{% url 'standings' %}" class="tab">Standings</a></li>
-				<li class="tab-list"><a href="{% url 'freeagents' %}" class="tab">Free Agents</a></li>
+				<li class="tab-list"><a href="/shb/freeagents/-points" class="tab">Free Agents</a></li>
 				<li class="tab-list" style="float: right"><a href="{% url 'logout' %}" class="tab">Logout</a></li>
 
 			</ul> 
@@ -27,9 +27,9 @@
 			<table id="fa-table">
 				<tr>
 					<th>Position</th>
-					<th><a class="fa-sort" href="/shb/freeagents/newman_instrument">Instrument</a></th>
-					<th><a class="fa-sort" href="/shb/freeagents/newman_name">Name</a></th>
-					<th><a class="fa-sort" href="/shb/freeagents/">Points</th>
+					<th><a class="fa-sort" href="/shb/freeagents/-newman_instrument">Instrument</a></th>
+					<th><a class="fa-sort" href="/shb/freeagents/-newman_name">Name</a></th>
+					<th><a class="fa-sort" href="/shb/freeagents/-points">Points</th>
 				</tr>
 				{% for agent in free_agents %}
 					<tr>
