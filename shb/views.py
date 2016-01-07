@@ -77,7 +77,9 @@ def standings(request):
 @login_required
 def freeagents(request, sort="-points"):
 	free_agents = Newman.objects.filter(owner = None)
-	free_agents = free_agents.order_by("-"+sort)
+	if sort == 'points':
+		sort = '-' + sort
+	free_agents = free_agents.order_by(sort)
 	context = {'free_agents': free_agents}
 	for newman in Newman.objects.all():
 		newman.section()
