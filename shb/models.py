@@ -71,6 +71,7 @@ class Oldmen(models.Model):
 	team_name =models.CharField(max_length=200)
 	team_owner = models.CharField(max_length=200)
 	team_points = models.IntegerField(default=0)
+	#trade_offers = []
 	def __str__(self):
 		return self.team_owner
 	def team_total(self):
