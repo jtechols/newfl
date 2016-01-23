@@ -43,7 +43,7 @@
 						<tr>
 							<td class="shb-row">Woodwind</td>
 							<td class="shb-row">{{ ww.newman_instrument }}</td>
-							<td class="shb-row"><a href="shb/{{newman.id}}">{{ ww.newman_name }}</a></td>
+							<td class="shb-row"><a href="/shb/{{ ww.id }}/">{ ww.newman_name }}</a></td>
 							<td class="shb-row">{{ ww.points }}</td>
 							<form method="post" action="/shb/remove/{{ww.id}}/">
     						{% csrf_token %}
