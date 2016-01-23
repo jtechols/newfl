@@ -86,10 +86,8 @@ def freeagents(request, sort="-points"):
 	return render(request, 'shb/freeagents.html', context)
 @login_required
 def newman_detail(request, newman_id):
-	shb_list = []
-	newman = Newman.objects.filter(id = newman_id)
-	if newman.shb_set.all():
-		shb_list = newman.shb_set.all()
+	newman = Newman.objects.filter(id = newman_id)[0]
+	shb_list = newman.shb_set.all()
 	context={'newman': newman, 'shb_list': shb_list }
 	return render(request, "shb/newman_detail.html", context)
 @login_required
