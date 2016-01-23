@@ -39,7 +39,7 @@
 			<ul id="shb-list">
 				{% if shb_list %}
 					{% for shb in shb_list %}
-						<li> {shb.shb_name} on {% shb/shb_time %}</li>
+						<li> {shb.shb_name} on {% shb.shb_time %}</li>
 					{% endfor %}
 				{% else %}
 					<li> This Newman has attended no SHB's </li>
