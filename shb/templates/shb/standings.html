@@ -31,7 +31,7 @@
 					{% if oldman = person %}
 						<li class="stand-list" id="self-stand"><a href="/shb/{{ oldman.id }}/" class="old-tail">{{ oldman.team_name }} || {{ oldman.team_points}} points</a></li>
 					{% else %}
-						<li class="stand-list"><a href="/shb/{{ oldman.id }}/">{{ oldman.team_name }} || {{ oldman.team_points}} points</a></li>
+						<li class="stand-list"><a href="/shb/oldman/{{ oldman.id }}/">{{ oldman.team_name }} || {{ oldman.team_points}} points</a></li>
 					{% endif %}
 				{% endfor %}
 				
