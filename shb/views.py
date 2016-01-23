@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader
-from .models import Newman, Oldmen, SHB
+from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout, login, authenticate
@@ -86,8 +86,10 @@ def freeagents(request, sort="-points"):
 	return render(request, 'shb/freeagents.html', context)
 @login_required
 def newman_detail(request, newman_id):
+	shb_list = []
 	newman = Newman.objects.filter(id = newman_id)
-	shb_list = newman.shb_set.all()
+	if newman.shb_set.all():
+		shb_list = newman.shb_set.all()
 	context={'newman': newman, 'shb_list': shb_list }
 	return render(request, "shb/newman_detail.html", context)
 @login_required
