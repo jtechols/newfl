@@ -26,6 +26,7 @@ class NewmanAdmin(admin.ModelAdmin):
 		(None, {'fields': ['newman_instrument']}),
 		(None, {'fields': ['owner']}),
 		(None, {'fields': ['points']}),
+		('Image File Name', {'fields': ['imgFileName']}),
 	]
 	inlines = [SHBInline]
 	list_display = ('newman_name', 'newman_instrument', 'calc_points')
