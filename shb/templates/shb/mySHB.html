@@ -70,7 +70,7 @@
 						<tr>
 							<td class="shb-row">Saxophone</td>
 							<td class="shb-row">{{ sax.newman_instrument }}</td>
-							<td class="shb-row"><a href="/shb/newman/{{ ww.id }}/">{{ sax.newman_name }}</a></td>
+							<td class="shb-row"><a href="/shb/newman/{{ sax.id }}/">{{ sax.newman_name }}</a></td>
 							<td class="shb-row">{{ sax.points }}</td>
 							<form method="post" action="/shb/remove/{{sax.id}}/">
     						{% csrf_token %}
@@ -97,7 +97,7 @@
 						<tr>
 							<td class="shb-row">Upper Brass</td>
 							<td class="shb-row">{{ hb.newman_instrument }}</td>
-							<td class="shb-row"><a href="/shb/newman/{{ ww.id }}/">{{ hb.newman_name }}</a></td>
+							<td class="shb-row"><a href="/shb/newman/{{ hb.id }}/">{{ hb.newman_name }}</a></td>
 							<td class="shb-row">{{ hb.points }}</td>
 							<form method="post" action="/shb/remove/{{hb.id}}/">
     						{% csrf_token %}
@@ -124,7 +124,7 @@
 						<tr>
 							<td class="shb-row">Low Brass</td>
 							<td class="shb-row">{{ lb.newman_instrument }}</td>
-							<td class="shb-row"><a href="/shb/newman/{{ ww.id }}/">{{ lb.newman_name }}</a></td>
+							<td class="shb-row"><a href="/shb/newman/{{ lb.id }}/">{{ lb.newman_name }}</a></td>
 							<td class="shb-row">{{ lb.points }}</td>
 							<form method="post" action="/shb/remove/{{lb.id}}/">
     						{% csrf_token %}
@@ -151,7 +151,7 @@
 						<tr>
 							<td class="shb-row">Perc</td>
 							<td class="shb-row">{{ p.newman_instrument }}</td>
-							<td class="shb-row"><a href="/shb/newman/{{ ww.id }}/">{{ p.newman_name }}</a></td>
+							<td class="shb-row"><a href="/shb/newman/{{ p.id }}/">{{ p.newman_name }}</a></td>
 							<td class="shb-row">{{ p.points }}</td>
 							<form method="post" action="/shb/remove/{{p.id}}/">
     						{% csrf_token %}
@@ -178,7 +178,7 @@
 						<tr>
 							<td class="shb-row">Flex</td>
 							<td class="shb-row">{{ f.newman_instrument }}</td>
-							<td class="shb-row"><a href="/shb/newman/{{ ww.id }}/">{{ f.newman_name }}</a></td>
+							<td class="shb-row"><a href="/shb/newman/{{ f.id }}/">{{ f.newman_name }}</a></td>
 							<td class="shb-row">{{ f.points }}</td>
 							<form method="post" action="/shb/remove/{{f.id}}/">
     						{% csrf_token %}
@@ -238,7 +238,7 @@
 						<tr>
 							<td class="shb-row">Bench</td>
 							<td class="shb-row">{{ b.newman_instrument }}</td>
-							<td class="shb-row"><a href="/shb/newman/{{ ww.id }}/">{{ b.newman_name }}</a></td>
+							<td class="shb-row"><a href="/shb/newman/{{ b.id }}/">{{ b.newman_name }}</a></td>
 							<td class="shb-row">{{ b.points }}</td>
 							<form method="post" action="/shb/remove/{{b.id}}/">
     						{% csrf_token %}
