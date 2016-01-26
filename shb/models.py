@@ -10,7 +10,7 @@ class Newman(models.Model):
 	points = models.IntegerField(default=0)
 	imgFileName = models.CharField(max_length=200, null=True)
 	woodwind = models.BooleanField(default=False)
-	saxophone = models.BooleanField(default=False)
+	#saxophone = models.BooleanField(default=False)
 	lowbrass = models.BooleanField(default=False)
 	highbrass = models.BooleanField(default=False)
 	perc = models.BooleanField(default=False)
