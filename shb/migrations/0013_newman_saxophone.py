@@ -10,10 +10,3 @@ class Migration(migrations.Migration):
         ('shb', '0012_auto_20160106_0938'),
     ]
 
-    operations = [
-        migrations.AddField(
-            model_name='newman',
-            name='saxophone',
-            field=models.BooleanField(default=False),
-        ),
-    ]
