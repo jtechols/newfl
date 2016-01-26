@@ -8,6 +8,7 @@ class Newman(models.Model):
 	newman_instrument = models.CharField(max_length=100)
 	owner = models.ForeignKey('Oldmen', null=True, blank=True)
 	points = models.IntegerField(default=0)
+	imgFileName = models.CharField(max_length=200)
 	woodwind = models.BooleanField(default=False)
 	saxophone = models.BooleanField(default=False)
 	lowbrass = models.BooleanField(default=False)
