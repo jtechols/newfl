@@ -44,7 +44,7 @@
 						{% elif agent.perc %}
 							<td class="fa-list">Perc</td>
 						{% endif %}
-						<td class="fa-list">{{ agent.newman_instrument }}</td>
+						<td class="fa-list"><a class="newman-detail-link" href="/shb/newman/{{agent.id}}">{{ agent.newman_instrument }}</a></td>
 						<td class="fa-list">{{ agent.newman_name }}</td>
 						<td class="fa-list">{{ agent.points }}</td>
 						<form method="post" action="/shb/add/{{agent.id}}/">
