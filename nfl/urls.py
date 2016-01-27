@@ -20,7 +20,7 @@ from shb import views
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-	url(r'^$', include('shb.urls')),
+	url(r'^', include('shb.urls')),
 	url(r'^shb/', include('shb.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/login/', auth_views.login),
