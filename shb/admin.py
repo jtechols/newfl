@@ -11,6 +11,10 @@ class SHBInline(admin.TabularInline):
 	verbose_name = "SHB Attended"
 	verbose_name_plural = "SHB's Attended"
 	extra = 3
+class OldmenInline(admin.TabularInline):
+	model = Oldmen.newman_set.through
+	verbose_name = "Newman on Team"
+	verbose_name_plural = "Newmen on Team"
 class SHBAdmin(admin.ModelAdmin):
 	fieldsets = [
 		(None, {'fields': ['shb_name']}),
@@ -36,7 +40,9 @@ class OldmenAdmin(admin.ModelAdmin):
 		(None, {'fields': ['team_owner']}),
 		(None, {'fields': ['team_points']}),
 	]
+	inlines = [OldmenInline]
 	list_display = ('team_name', 'team_owner', 'team_total')
+
 
 admin.site.register(Newman,NewmanAdmin)
 admin.site.register(Oldmen, OldmenAdmin)
