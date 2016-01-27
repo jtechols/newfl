@@ -12,7 +12,7 @@ class SHBInline(admin.TabularInline):
 	verbose_name_plural = "SHB's Attended"
 	extra = 3
 class OldmenInline(admin.TabularInline):
-	model = Oldmen.newman_set.through
+	model = Oldmen.newman_list.through
 	verbose_name = "Newman on Team"
 	verbose_name_plural = "Newmen on Team"
 class SHBAdmin(admin.ModelAdmin):
