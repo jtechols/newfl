@@ -29,7 +29,7 @@
 			<ol id="standings-list"><h1>Standings</h1>
 				{% for oldman in oldmen_list %}
 					{% if oldman = person %}
-						<li class="stand-list" id="self-stand"><a href="/shb/oldman/{{ oldman.id }}/" class="old-tail">{{ oldman.team_name }} || {{ oldman.team_total()}} points</a></li>
+						<li class="stand-list" id="self-stand"><a href="/shb/oldman/{{ oldman.id }}/" class="old-tail">{{ oldman.team_name }} || {{ oldman.team_total}} points</a></li>
 					{% else %}
 						<li class="stand-list"><a href="/shb/oldman/{{ oldman.id }}/">{{ oldman.team_name }} || {{ oldman.team_points}} points</a></li>
 					{% endif %}
