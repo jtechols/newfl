@@ -192,7 +192,7 @@ def flex_newman(request, newman_id):
 				person = oldmen
 				person.flex_newman(newman_id)
 	return mySHB(request)
-@login_required(request):
+@login_required
 def lock_lineups(request):
 	if request.user.is_staff():
 		for old in Oldmen.objects.all():
