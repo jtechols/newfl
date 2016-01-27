@@ -197,4 +197,4 @@ def lock_lineups(request):
 	if request.user.is_staff():
 		for old in Oldmen.objects.all():
 			old.locked = True
-	return mySHB(request):
+	return mySHB(request)
