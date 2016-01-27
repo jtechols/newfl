@@ -195,6 +195,6 @@ def flex_newman(request, newman_id):
 @login_required
 def lock_lineups(request):
 	#if request.user.is_staff:
-	for old in Oldmen.objects.all():
-		old.locked = True
-	return mySHB(request)
+	for oldmen in Oldmen.objects.all():
+		oldmen.locked = True
+	return standings(request)
