@@ -27,16 +27,22 @@
 		<div id="team-list">
 			<table id="shb-table">
 				<tr class="shb-header">
-					<th colspan=7>My SHB</th>
+					{% if not person.locked %}
+						<th colspan=7>My SHB</th>
+					{% else %}
+						<th colspan=4>My SHB</th>
+					{% endif %}
 				</tr>
 				<tr class="shb-header">
 					<th>Position</th>
 					<th>Instrument</th>
 					<th>Name</th>
 					<th>Points</th>
-					<th></th>
-					<th></th>
-					<th></th>
+					{% if not person.locked %}
+						<th></th>
+						<th></th>
+						<th></th>
+					{% endif %}
 				</tr>
 				{% if team_list %}
 					{% for ww in ww_list %}
@@ -240,11 +246,17 @@
 						<tr>
 							<th id="shb-point-total" colspan="3">Total Points</th>
 							<th id="shb-point-total">{{ person.team_points }}</th>
-							<td></td>
-							<td></td>
-							<td></td>
+							{% if not person.locked %}
+								<td></td>
+								<td></td>
+								<td></td>
+							{% endif %}
 						<tr>
-							<th colspan=7 id="shb-point-total">Bench</th>
+							{%if not person.locked %}
+								<th colspan=7 id="shb-point-total">Bench</th>
+							{% else %}
+								<th colspan=4 id="shb-point-total">Bench</th>
+							(% endif %)
 						</tr>
 					{% for b in b_list %}
 						<tr>
