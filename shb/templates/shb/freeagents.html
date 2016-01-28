@@ -24,6 +24,9 @@
 		</div>
 		<div id="free-agents">
 			<h1>Free Agents</h1>
+			{% if person.locked %}
+				<p>Lineups are locked, adding players is only possible when lineups are unlocked</p>
+			{% endif %}
 			<table id="fa-table">
 				<tr>
 					<th>Position</th>
@@ -47,11 +50,11 @@
 						<td class="fa-list">{{ agent.newman_instrument }}</td>
 						<td class="fa-list"><a href="/shb/newman/{{agent.id}}">{{ agent.newman_name }}</a></td>
 						<td class="fa-list">{{ agent.points }}</td>
-						<form method="post" action="/shb/add/{{agent.id}}/">
-    						{% csrf_token %}
-							<td><input type="submit" value="add"/></td>
-							<input type="hidden" name="next" value="{{ next }}" />
-						</form>
+						{% if not person.locked %}
+							<form method="post" action="/shb/add/{{agent.id}}/">
+								<td><input type="submit" value="add"/></td>
+							</form>
+						{% endif %}
 					</tr>
 				{% endfor %}
 		</div>
