@@ -35,6 +35,7 @@ class OldmenAdmin(admin.ModelAdmin):
 		(None, {'fields': ['team_name']}),
 		(None, {'fields': ['team_owner']}),
 		(None, {'fields': ['team_points']}),
+		('Locked?', {'fields': ['locked']}),
 	]
 	list_display = ('team_name', 'team_owner', 'team_total')
 
