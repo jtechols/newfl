@@ -308,9 +308,15 @@
 				{% endif %}
 			</table>
 			{% if request.user.is_staff %}
-				<form action="/shb/lock_lineups/">
-					<input type="submit" value="Lock Lineups"/>
-				</form>
+				{% if not person.locked %}
+					<form action="/shb/lock_lineups/">
+						<input type="submit" value="Lock Lineups"/>
+					</form>
+				{% else %}
+					<form action="/shb/unlock_lineups/">
+						<input type="submit" value="Unlock Lineups"/>
+					</form>
+				{% endif %}
 			{% endif %}
 		</div>
 	</body>

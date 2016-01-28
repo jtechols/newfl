@@ -198,4 +198,10 @@ def lock_lineups(request):
 		for oldmen in Oldmen.objects.all():
 			oldmen.locked = True 
 			oldmen.save()
-	return standings(request)
+	return mySHB(request)
+def unlock_lineups(request):
+	if request.user.is_staff:
+		for oldmen in Oldmen.objects.all():
+			oldmen.locked = False
+			oldmen.save()
+	return mySHB(request)
