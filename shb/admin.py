@@ -16,6 +16,7 @@ class SHBAdmin(admin.ModelAdmin):
 		(None, {'fields': ['shb_name']}),
 		('Date', {'fields': ['shb_time'], 'classes': ['collapse']}),
 		(None, {'fields': ['limited']}),
+		('Active?', {'fields': ['active']}),
 	]
 	inlines = [NewmanInline]
 	verbose_name = "SHB"
@@ -37,7 +38,6 @@ class OldmenAdmin(admin.ModelAdmin):
 		(None, {'fields': ['current_points']}),
 		(None, {'fields': ['team_points']}),
 		('Locked?', {'fields': ['locked']}),
-		('Active?', {'fields': ['active']}),
 	]
 	list_display = ('team_name', 'team_owner', 'team_points')
 
