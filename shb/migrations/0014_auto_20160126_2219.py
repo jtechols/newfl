@@ -11,14 +11,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AddField(
-            model_name='newman',
-            name='imgFileName',
-            field=models.CharField(null=True, max_length=200),
-        ),
-        migrations.AddField(
-            model_name='newman',
-            name='saxophone',
-            field=models.BooleanField(default=False),
-        ),
+
     ]
