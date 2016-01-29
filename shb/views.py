@@ -212,6 +212,6 @@ def unlock_lineups(request):
 	return mySHB(request)
 def bank_points(request):
 	if request.user.is_staff:
-		for oldmen in Oldmen.onjects.all():
+		for oldmen in Oldmen.objects.all():
 			oldmen.bank_points()
 	return mySHB(request)
