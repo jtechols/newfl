@@ -80,7 +80,7 @@ class Oldmen(models.Model):
 	def current_total(self):
 		self.current_points = 0
 		for n in self.newman_set.filter(bench=False):
-			self.current_points += n.points
+			self.current_points += n.calc_points()
 			self.save()
 		return self.current_points
 	def bank_points(self):
