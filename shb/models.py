@@ -71,6 +71,7 @@ class Newman(models.Model):
 class Oldmen(models.Model):
 	team_name =models.CharField(max_length=200)
 	team_owner = models.CharField(max_length=200)
+	current_points = models.IntegerField(default=0)
 	team_points = models.IntegerField(default=0)
 	locked = models.BooleanField(default=False)
 	#trade_offers = []
