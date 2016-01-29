@@ -165,7 +165,7 @@ class SHB(models.Model):
 		return self.shb_name
 	def set_active(self):
 		current_month = datetime.datetime.now().month
-		current_day - datetime.datetime.now().day
+		current_day = datetime.datetime.now().day
 		if current_month < self.shb_time.month:
 			self.active = True
 		elif current_month > self.shb_time.month:
