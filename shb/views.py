@@ -39,7 +39,7 @@ def mySHB(request):
 			if full_name == oldmen.team_owner:
 				team_list = oldmen.newman_set.all()
 				person = oldmen
-				person.team_total()
+				person.current_total()
 	for newman in team_list:
 		newman.section()
 	for each_new in Newman.objects.all():
@@ -65,7 +65,7 @@ def mySHB(request):
 @login_required
 def standings(request):
 	for oldman in Oldmen.objects.all():
-		oldman.team_total()
+		oldman.current_total()
 	oldmen_list = Oldmen.objects.order_by('-team_points')
 	person = None
 	full_name = request.user.get_full_name()
@@ -126,7 +126,7 @@ def oldman_detail(request, oldman_id):
 		p_list = []
 		b_list = []
 		f_list = []
-	oldman.team_total()
+	oldman.current_total()
 	context  = {'oldman': oldman, 'team_list':team_list, 'ww_list': ww_list, 'sax_list':sax_list, 'hb_list': hb_list, 'lb_list':lb_list, 'p_list':p_list, 'b_list':b_list, 'f_list':f_list, 'edit':edit}
 	return render(request, 'shb/oldman_detail.html', context)
 @login_required
@@ -209,4 +209,9 @@ def unlock_lineups(request):
 		for oldmen in Oldmen.objects.all():
 			oldmen.locked = False
 			oldmen.save()
+	return mySHB(request)
+def bank_points(request):
+	if request.user.is_staff:
+		for oldmen in Oldmen.onjects.all():
+			oldmen.bank_points()
 	return mySHB(request)

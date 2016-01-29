@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+import datetime
 
 # Create your models here.
 
@@ -20,7 +21,7 @@ class Newman(models.Model):
 		return self.newman_name
 	def calc_points(self):
 		self.points = 0
-		for shb in self.shb_set.all():
+		for shb in self.shb_set.filter(active=True):
 			if shb.limited:
 				self.points += 7
 			else:
@@ -74,15 +75,25 @@ class Oldmen(models.Model):
 	current_points = models.IntegerField(default=0)
 	team_points = models.IntegerField(default=0)
 	locked = models.BooleanField(default=False)
-	#trade_offers = []
 	def __str__(self):
 		return self.team_owner
-	def team_total(self):
-		self.team_points = 0
+	def current_total(self):
+		self.current_points = 0
 		for n in self.newman_set.filter(bench=False):
-			self.team_points += n.points
+			self.current_points += n.points
 			self.save()
-		return self.team_points
+		return self.current_points
+	def bank_points(self):
+		self.team_points += self.current_points
+		self.save()
+		## Stores current point total in team total and then resets newman points to 0 ##
+		for n in self.newman_set.all():
+			n.points = 0
+			n.save()
+		## Sets completed SHB's to inactive and upcoming SHB's to active ##
+		for shb in SHB.objects.all():
+			shb.set_active()
+
 	def add_newman(self, newman_id):
 		newman = Newman.objects.filter(id=newman_id)[0]
 		if not person.locked:
@@ -149,5 +160,22 @@ class SHB(models.Model):
 	shb_time = models.DateTimeField('Date of SHB')
 	newman_list = models.ManyToManyField('Newman')
 	limited = models.BooleanField(default=False)
+	active = models.BooleanField(default=True)
 	def __str__(self):
 		return self.shb_name
+	def set_active(self):
+		current_month = datetime.datetime.now().month
+		current_day - datetime.datetime.now().day
+		if current_month < self.shb_time.month:
+			self.active = True
+		elif current_month > self.shb_time.month:
+			self.active = False
+		elif current_month = self.shb_time.month:
+			if current_day < self.shb_time.day:
+				self.active = True
+			else:
+				self.active = False
+		else:
+			self.active = False
+		self.save()
+

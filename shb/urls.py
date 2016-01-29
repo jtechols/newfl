@@ -19,5 +19,7 @@ urlpatterns = [
 	url(r'^newman/(?P<newman_id>[0-9]+)/$', views.newman_detail, name='newman_detail'),
 	url(r'^lock_lineups/$', views.lock_lineups, name='lock_lineups'),
 	url(r'^unlock_lineups/$', views.unlock_lineups, name='unlock_lineups'),
+	url(r'^bank_points/$', views.bank_points, name='bank_points'),
 ]
+
 

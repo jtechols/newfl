@@ -34,10 +34,12 @@ class OldmenAdmin(admin.ModelAdmin):
 	fieldsets = [
 		(None, {'fields': ['team_name']}),
 		(None, {'fields': ['team_owner']}),
+		(None, {'fields': ['current_points']}),
 		(None, {'fields': ['team_points']}),
 		('Locked?', {'fields': ['locked']}),
+		('Active?', {'fields': ['active']}),
 	]
-	list_display = ('team_name', 'team_owner', 'team_total')
+	list_display = ('team_name', 'team_owner', 'team_points')
 
 
 admin.site.register(Newman,NewmanAdmin)

@@ -244,8 +244,8 @@
 						</tr>
 					{% endfor %}
 						<tr>
-							<th id="shb-point-total" colspan="3">Total Points</th>
-							<th id="shb-point-total">{{ person.team_points }}</th>
+							<th id="shb-point-total" colspan="3">Current Points</th>
+							<th id="shb-point-total">{{ person.current_points }}</th>
 							{% if not person.locked %}
 								<td></td>
 								<td></td>
@@ -329,6 +329,9 @@
 						<input type="submit" value="Unlock Lineups"/>
 					</form>
 				{% endif %}
+				<form action="/shb/bank_points/">
+					<input type="submit" value="Bank Points"/>
+				</form>
 			{% endif %}
 		</div>
 	</body>
