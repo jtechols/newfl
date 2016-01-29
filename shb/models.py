@@ -89,6 +89,7 @@ class Oldmen(models.Model):
 		self.save()
 		## Stores current point total in team total and then resets newman points to 0 ##
 		for n in self.newman_set.all():
+			n.career_points += n.points
 			n.points = 0
 			n.save()
 		## Sets completed SHB's to inactive and upcoming SHB's to active ##

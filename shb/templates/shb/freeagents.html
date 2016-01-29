@@ -32,7 +32,7 @@
 					<th>Position</th>
 					<th><a class="fa-sort" href="/shb/freeagents/newman_instrument">Instrument</a></th>
 					<th><a class="fa-sort" href="/shb/freeagents/newman_name">Name</a></th>
-					<th><a class="fa-sort" href="/shb/freeagents/points">Points</th>
+					<th><a class="fa-sort" href="/shb/freeagents/points">Career Points</th>
 				</tr>
 				{% for agent in free_agents %}
 					<tr>
@@ -49,7 +49,7 @@
 						{% endif %}
 						<td class="fa-list">{{ agent.newman_instrument }}</td>
 						<td class="fa-list"><a href="/shb/newman/{{agent.id}}">{{ agent.newman_name }}</a></td>
-						<td class="fa-list">{{ agent.points }}</td>
+						<td class="fa-list">{{ agent.career_points }}</td>
 						{% if not person.locked %}
 							<form method="post" action="/shb/add/{{agent.id}}/">
 								<td><input type="submit" value="add"/></td>
