@@ -6,9 +6,9 @@ from django.db import models, migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
+    """dependencies = [
         ('shb', '0014_auto_20160126_2219'),
-    ]
+    ]"""
 
     operations = [
         migrations.AddField(
