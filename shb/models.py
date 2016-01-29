@@ -170,7 +170,7 @@ class SHB(models.Model):
 			self.active = True
 		elif current_month > self.shb_time.month:
 			self.active = False
-		elif current_month = self.shb_time.month:
+		elif current_month == self.shb_time.month:
 			if current_day < self.shb_time.day:
 				self.active = True
 			else:
