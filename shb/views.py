@@ -75,14 +75,14 @@ def standings(request):
 	context = {'oldmen_list': oldmen_list, 'person': person}
 	return render(request, 'shb/standings.html', context)
 @login_required
-def freeagents(request, sort="-points"):
+def freeagents(request, sort="-career_points"):
 	oldmen_list = Oldmen.objects.all()
 	full_name = request.user.get_full_name()
 	for oldmen in oldmen_list:
 		if full_name == oldmen.team_owner:
 			person = oldmen
 	free_agents = Newman.objects.filter(owner = None)
-	if sort == 'points':
+	if sort == 'career_points':
 		sort = '-' + sort
 	free_agents = free_agents.order_by(sort)
 	context = {'free_agents': free_agents, 'person': person}
