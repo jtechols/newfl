@@ -84,6 +84,14 @@
 							<td class="detail-row">{{ p.points }}</td>
 						</tr>
 					{% endfor %}
+					{% for f in f_list %}
+						<tr>
+							<td class="detail-row">Flex</td>
+							<td class="detail-row">{{ f.newman_instrument }}</td>
+							<td class="detail-row">{{ f.newman_name }}</td>
+							<td class="detail-row">{{ f.points }}</td>
+						</tr>
+					{% endfor %}
 						<tr>
 							<th id="detail-point-total" colspan="3">Total Points</th>
 							<th id="detail-point-total">{{ oldman.current_points }}</th>
