@@ -251,8 +251,9 @@
 						</tr>
 					{% endfor %}
 						<tr>
-							<th id="shb-point-total" colspan="4">Current Points</th>
+							<th id="shb-point-total" colspan="3">Current Points</th>
 							<th id="shb-point-total">{{ person.current_points }}</th>
+							<th if="shb-point-total"></th>
 							{% if not person.locked %}
 								<td></td>
 								<td></td>
