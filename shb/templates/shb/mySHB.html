@@ -28,9 +28,9 @@
 			<table id="shb-table">
 				<tr class="shb-header">
 					{% if not person.locked %}
-						<th colspan=7>My SHB</th>
+						<th colspan=8>My SHB</th>
 					{% else %}
-						<th colspan=4>My SHB</th>
+						<th colspan=5>My SHB</th>
 					{% endif %}
 				</tr>
 				<tr class="shb-header">
@@ -251,7 +251,7 @@
 						</tr>
 					{% endfor %}
 						<tr>
-							<th id="shb-point-total" colspan="3">Current Points</th>
+							<th id="shb-point-total" colspan="4">Current Points</th>
 							<th id="shb-point-total">{{ person.current_points }}</th>
 							{% if not person.locked %}
 								<td></td>
@@ -260,9 +260,9 @@
 							{% endif %}
 						<tr>
 							{%if not person.locked %}
-								<th colspan=7 id="shb-point-total">Bench</th>
+								<th colspan=8 id="shb-point-total">Bench</th>
 							{% else %}
-								<th colspan=4 id="shb-point-total">Bench</th>
+								<th colspan=5 id="shb-point-total">Bench</th>
 							{% endif %}
 						</tr>
 					{% for b in b_list %}
